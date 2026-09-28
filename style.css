@@ -1,0 +1,14 @@
+.slidev-layout {
+  font-size: 1.75rem;
+  line-height: 1.32;
+}
+
+.slidev-layout h1 {
+  font-size: 2.5rem;
+  line-height: 1.15;
+}
+
+.slidev-layout .source-note {
+  font-size: 1.05rem;
+  line-height: 1.2;
+}

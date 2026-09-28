@@ -2,7 +2,7 @@
   "name": "tuesday-degentweb-slidev",
   "private": true,
   "scripts": {
-    "dev": "slidev --host 0.0.0.0",
+    "dev": "slidev --remote",
     "build": "slidev build"
   },
   "dependencies": {
