@@ -66,6 +66,24 @@ class: text-center
 
 ---
 
+<img class="paper-plot" src="/paper/body_swap_transfer_and_size_errors_split_1to1.png" alt="Paper figure: site-classifier transfer and training-size sensitivity across Wix, B12, body-swap, and CC2014 sites"/>
+
+<Footer />
+
+---
+
+<img class="paper-plot" src="/paper/cdf_baseline_svm_scores.png" alt="Paper figure: baseline site score distributions and overlap"/>
+
+<Footer />
+
+---
+
+<img class="paper-plot" src="/paper/pangram_vs_binoculars.png" alt="Paper figure: Pangram AI percentage versus Binoculars score for 605 generated replacement texts"/>
+
+<Footer />
+
+---
+
 # CC denominator
 
 <div class="denominator">409,805 retained<br/>↓<br/>94,908 qualifying<br/>↓<br/>6.0% positive calls ≠ whole web</div>
@@ -79,6 +97,12 @@ class: text-center
 <div class="two-stats"><div><span class="stat">6.0%</span><br/>CC 2020–25 · 94,908 qualifying</div><div><span class="stat">15.4%</span><br/>Bing how-to · 18,169 qualifying</div></div>
 
 <div class="source-note">Classifier calls ≠ web prevalence</div>
+
+<Footer />
+
+---
+
+<img class="paper-plot" src="/paper/transition_3site.png" alt="Paper figure: examples of temporal changes in detector scores on sampled sites"/>
 
 <Footer />
 

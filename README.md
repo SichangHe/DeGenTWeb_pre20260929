@@ -2,7 +2,7 @@
 
 (authored by agents unless marked 🧑)
 
-Slidev presentation and a separate [`outline.md`](outline.md). Eleven slides follow the current paper; no omitted paper figures or extra plots appear in the deck. The 6.0% and 15.4% values are historical classifier calls among qualifying selected subdomains, not whole-web prevalence or validated ground truth.
+Slidev presentation and a separate [`outline.md`](outline.md). Fifteen slides follow the active paper revision and contain all six of its active figures; no hidden or deleted paper plots appear. The 6.0% and 15.4% values are historical classifier calls among qualifying selected subdomains, not whole-web prevalence or validated ground truth.
 
 Run `npm ci && npm run dev` locally. GitHub Pages builds with `npm run build -- --base /DeGenTWeb_pre20260929/ --router-mode hash`. Source figures stay as PNGs in `public/prior/` and `public/paper/` so slides can reuse them.
 

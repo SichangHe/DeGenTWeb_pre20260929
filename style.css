@@ -90,6 +90,14 @@
   margin: 0 auto;
 }
 
+.slidev-layout .paper-plot {
+  display: block;
+  height: 26rem;
+  max-width: 96%;
+  margin: 0.5rem auto 0;
+  object-fit: contain;
+}
+
 .slidev-layout .two-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
