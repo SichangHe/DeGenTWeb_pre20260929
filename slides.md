@@ -68,11 +68,11 @@ Steven Hé (Sīchàng)
 
 ---
 
-# What kinds of sites are flagged?
+# A proxy for site incentives
 
-<img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category composition in selected positive-call and non-positive groups"/>
+<div class="proxy-bars"><div style="--fill:78.8%">Positive calls <strong>78.8%</strong></div><div style="--fill:55.8%">Non-positive <strong>55.8%</strong></div></div>
 
-<div class="source-note">Equal-sized groups; draft labels ≠ motives.</div>
+<div class="source-note">Draft CC: clear-financial-incentive proxy, selected equal-sized groups. Labels ≠ motives.</div>
 
 <Footer />
 
@@ -203,6 +203,16 @@ Steven Hé (Sīchàng)
 <div class="hero">PNG exports of paper figures</div>
 
 <div class="source-note">Draft figures, not additional verified findings.</div>
+
+<Footer />
+
+---
+
+# Paper · full category comparison
+
+<img class="paper-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Full draft category composition chart of selected groups"/>
+
+<div class="source-note">Draft selected groups; full-size PNG is in `public/paper/`.</div>
 
 <Footer />
 

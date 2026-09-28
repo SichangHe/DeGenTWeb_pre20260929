@@ -55,12 +55,23 @@
   margin: 1rem auto 0;
 }
 
-.slidev-layout .category-figure {
-  display: block;
-  height: 17rem;
-  max-width: 100%;
-  object-fit: contain;
-  margin: 0 auto;
+.slidev-layout .proxy-bars {
+  display: grid;
+  gap: 1.2rem;
+  margin: 4rem auto 2rem;
+  max-width: 92%;
+  font-size: 2.5rem;
+}
+
+.slidev-layout .proxy-bars > div {
+  background: linear-gradient(to right, #9bd4d7 var(--fill), #ecf1f5 var(--fill));
+  display: flex;
+  justify-content: space-between;
+  padding: 1.4rem;
+}
+
+.slidev-layout .proxy-bars strong {
+  font-size: 3.4rem;
 }
 
 .slidev-layout .two-stats {

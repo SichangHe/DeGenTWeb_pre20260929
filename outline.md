@@ -2,7 +2,7 @@
 
 (authored by agents unless marked 🧑)
 
-Public GitHub Pages build: `https://sichanghe.github.io/DeGenTWeb_pre20260929/`. Main story: slides 1–10; curated archive and draft-paper figure gallery: slides 11–30. White background, large body and source text, author/page footer. PNG resources are in `public/prior/` and `public/paper/`; gallery items with old numbers are historical illustrations only.
+Public GitHub Pages build: `https://sichanghe.github.io/DeGenTWeb_pre20260929/`. Main story: slides 1–10; curated archive and draft-paper figure gallery follows. White background, large body and source text, author/page footer. PNG resources are in `public/prior/` and `public/paper/`; gallery items with old numbers are historical illustrations only.
 
 Core: estimate the positive-call share of *qualifying observed sites* whose extractable prose appears MGT-dominant (MGT = machine-generated text); characterize those sites. This is not a census of the whole web or verified ground truth.
 
