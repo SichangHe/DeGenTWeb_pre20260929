@@ -98,6 +98,27 @@
   object-fit: contain;
 }
 
+.slidev-layout .plot-caption {
+  font-size: 3rem;
+  line-height: 1.12;
+  text-align: center;
+}
+
+.slidev-layout .test-size-panel {
+  display: block;
+  height: 21rem;
+  max-width: 96%;
+  width: 96%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slidev-layout .plot-caveat {
+  font-size: 3rem;
+  line-height: 1.12;
+  text-align: center;
+}
+
 .slidev-layout .two-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;

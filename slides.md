@@ -72,6 +72,26 @@ class: text-center
 
 ---
 
+<div class="plot-caption">Generated test sites</div>
+
+<svg class="test-size-panel" viewBox="0 105 1030 800" role="img" aria-label="Test-size study: five fixed classifiers' missed generated body-swap sites versus 25 to 400 test sites, with observed fifth-to-ninety-fifth percentile ranges over 30 samples; separate training cohort from previous slide"><defs><clipPath id="body-plot-clip"><rect x="0" y="105" width="1030" height="800"/></clipPath></defs><image href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026" clip-path="url(#body-plot-clip)"/><rect x="940" y="105" width="90" height="660" fill="white"/></svg>
+
+<div class="plot-caveat">Different training cohort</div>
+
+<Footer />
+
+---
+
+<div class="plot-caption">Historical-CC test sites</div>
+
+<svg class="test-size-panel" viewBox="1010 105 1186 800" role="img" aria-label="Test-size study: positive-call rate among historically negative-labeled Common Crawl sites versus 100 to 2000 test sites, with observed fifth-to-ninety-fifth percentile ranges over 30 samples; negative-labeled does not verify human authorship"><defs><clipPath id="cc-plot-clip"><rect x="1010" y="105" width="1186" height="800"/></clipPath></defs><image href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026" clip-path="url(#cc-plot-clip)"/></svg>
+
+<div class="plot-caveat">2014 negative label ≠ verified human</div>
+
+<Footer />
+
+---
+
 <img class="paper-plot" src="/paper/cdf_baseline_svm_scores.png" alt="Paper figure: baseline site score distributions and overlap"/>
 
 <Footer />
