@@ -1,14 +1,77 @@
 .slidev-layout {
-  font-size: 1.75rem;
-  line-height: 1.32;
+  background: #fff !important;
+  color: #162337 !important;
+  font-size: 2.3rem;
+  line-height: 1.2;
 }
 
 .slidev-layout h1 {
-  font-size: 2.5rem;
-  line-height: 1.15;
+  color: #162337 !important;
+  font-size: 3.5rem !important;
+  line-height: 1.08;
 }
 
 .slidev-layout .source-note {
-  font-size: 1.05rem;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin-top: 1.2rem;
+}
+
+.slidev-layout .hero {
+  font-size: 3.2rem;
   line-height: 1.2;
+  margin: 6rem auto 3rem;
+  max-width: 95%;
+}
+
+.slidev-layout .visual-pair {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  height: 19rem;
+  margin-top: 2rem;
+}
+
+.slidev-layout .visual-pair img {
+  height: 100%;
+  max-width: 46%;
+  object-fit: contain;
+}
+
+.slidev-layout .wide-figure {
+  width: 100%;
+  height: 20rem;
+  object-fit: contain;
+  margin-top: 2rem;
+}
+
+.slidev-layout .main-figure,
+.slidev-layout .archival-figure,
+.slidev-layout .paper-figure {
+  display: block;
+  height: 19rem;
+  max-width: 96%;
+  object-fit: contain;
+  margin: 1.5rem auto 0;
+}
+
+.slidev-layout .two-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0 1rem;
+  font-size: 2.2rem;
+}
+
+.slidev-layout .stat {
+  color: #087f85;
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.slidev-layout .denominator {
+  font-size: 2.7rem;
+  line-height: 1.26;
+  margin-top: 2rem;
+  text-align: center;
 }

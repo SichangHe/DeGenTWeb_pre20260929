@@ -1,5 +1,9 @@
 # Tuesday talk: separate outline
 
+(authored by agents unless marked 🧑)
+
+Public GitHub Pages build: `https://sichanghe.github.io/DeGenTWeb_pre20260929/`. Main story: slides 1–10; curated archive and draft-paper figure gallery: slides 11–30. White background, large body and source text, author/page footer. PNG resources are in `public/prior/` and `public/paper/`; gallery items with old numbers are historical illustrations only.
+
 Core: estimate the positive-call share of *qualifying observed sites* whose extractable prose appears MGT-dominant (MGT = machine-generated text); characterize those sites. This is not a census of the whole web or verified ground truth.
 
 1. Scope: two selected frames, article-heavy qualifying subdomains, extractable prose, site-level decisions.
@@ -10,6 +14,6 @@ Core: estimate the positive-call share of *qualifying observed sites* whose extr
 6. Validation: human proxy negatives, generated sites, coverage and false positives; matched Pangram comparison. Older positive-call shares cannot be calibrated directly with the expanded evaluation because the classifier lineage is unproven.
 7. Takeaway: an estimate conditional on the observed, qualifying cohort; excluded sites remain unknown.
 
-Sources: the three previous Google Slides in `manager_mail/85c5dff58359-2184.txt:9-11` (PDF exports consulted); extracted figures in `public/prior/` include presentation 1 slide 15's privacy-notice screenshot, presentation 2 slide 18's historical score-distribution chart, and presentation 3 slide 16's recipe-index screenshot. The six-stage pipeline and footer come from `/ssd1/sichangheagent/CSci656/presentation/`. The category chart is rendered from the current draft manuscript `/ssd1/sichangheagent/dw-learning-curve-paper/figures/dw1/llm_site_kinds_incentive_coarse_combined_1col.pdf`; draft text `/ssd1/sichangheagent/dw-learning-curve-paper/sections/{abstract,wild,method,incentives,limitations}.tex`. Numeric claims remain provisional. Placeholders are for this preview, not final presentation slides.
+Sources: the three previous Google Slides in `manager_mail/85c5dff58359-2184.txt:9-11` (PDF exports consulted); extracted screenshots and curated PDF slide images are in `public/prior/`. Paper-draft figure PNGs are in `public/paper/` and render from the PDFs in `dw-learning-curve-paper/figures/dw1/` and `dw-learning-curve-paper/degentweb_pipeline.pdf`. The author/page footer is adapted from `CSci656/presentation/components/Footer.vue`. Numeric claims remain provisional; central validation is still a marked placeholder.
 
 ChatGPT review/revise pass (September 28): the browser reviewer recommended “Make the estimand explicit before showing the 6.0% / 15.4% numbers,” “Separate ‘measurement result’ from ‘validation status’ more visually,” and “Soften the category interpretation” (`/tmp/tuesday-slidev-final-review-medium.txt`). Slides 6–9 now make the denominators, uncalibrated classifier outputs, and selected characterization groups explicit.
