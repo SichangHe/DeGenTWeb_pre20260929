@@ -8,7 +8,7 @@ layout: cover
 class: text-center
 ---
 
-# How many observed sites appear machine-written?
+# How many sites receive a machine-text call?
 
 DeGenTWeb · Tuesday discussion draft
 
@@ -70,9 +70,9 @@ Steven Hé (Sīchàng)
 
 # What kinds of sites are flagged?
 
-<img class="main-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category composition in selected positive-call and non-positive groups"/>
+<img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category composition in selected positive-call and non-positive groups"/>
 
-<div class="source-note">Selected equal-sized groups, not a prevalence estimate. Categories do not prove motives.</div>
+<div class="source-note">Selected equal-sized groups; categories do not prove motives.</div>
 
 <Footer />
 
