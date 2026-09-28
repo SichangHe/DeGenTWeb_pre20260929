@@ -72,7 +72,7 @@ Steven Hé (Sīchàng)
 
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category composition in selected positive-call and non-positive groups"/>
 
-<div class="source-note">Selected equal-sized groups; categories do not prove motives.</div>
+<div class="source-note">Selected groups. Categories ≠ motives.</div>
 
 <Footer />
 
@@ -188,11 +188,11 @@ Steven Hé (Sīchàng)
 
 ---
 
-# Earlier talk 3 · site aggregation
+# Earlier talk 3 · pipeline
 
-<img class="archival-figure" src="/prior/gallery/c-20.png" alt="Prior presentation 3 slide 20: site aggregation"/>
+<img class="archival-figure" src="/prior/gallery/c-32.png" alt="Prior presentation 3 slide 32: pipeline components"/>
 
-<div class="source-note">Earlier talk 3, slide 20 · older accuracy claims are not current</div>
+<div class="source-note">Earlier talk 3, slide 32 · method illustration</div>
 
 <Footer />
 
