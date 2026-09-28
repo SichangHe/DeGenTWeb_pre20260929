@@ -1,7 +1,7 @@
 .slidev-layout {
   background: #fff !important;
   color: #162337 !important;
-  font-size: 2.3rem;
+  font-size: 3rem;
   line-height: 1.2;
 }
 
@@ -12,9 +12,14 @@
 }
 
 .slidev-layout .source-note {
-  font-size: 2.1rem;
+  font-size: 3rem;
   line-height: 1.15;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
+}
+
+.slidev-layout .mgt-definition {
+  font-size: 4.8rem;
+  margin: 5rem auto;
 }
 
 .slidev-layout .hero {
@@ -49,29 +54,18 @@
 .slidev-layout .archival-figure,
 .slidev-layout .paper-figure {
   display: block;
-  height: 17.5rem;
+  height: 20rem;
   max-width: 96%;
   object-fit: contain;
   margin: 1rem auto 0;
 }
 
-.slidev-layout .proxy-bars {
-  display: grid;
-  gap: 1.2rem;
-  margin: 4rem auto 2rem;
-  max-width: 92%;
-  font-size: 2.5rem;
-}
-
-.slidev-layout .proxy-bars > div {
-  background: linear-gradient(to right, #9bd4d7 var(--fill), #ecf1f5 var(--fill));
-  display: flex;
-  justify-content: space-between;
-  padding: 1.4rem;
-}
-
-.slidev-layout .proxy-bars strong {
-  font-size: 3.4rem;
+.slidev-layout .category-figure {
+  display: block;
+  height: 19rem;
+  max-width: 96%;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
 .slidev-layout .two-stats {
@@ -79,7 +73,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin: 3rem 0 1rem;
-  font-size: 2.2rem;
+  font-size: 3rem;
 }
 
 .slidev-layout .stat {
@@ -89,7 +83,7 @@
 }
 
 .slidev-layout .denominator {
-  font-size: 2.7rem;
+  font-size: 3rem;
   line-height: 1.26;
   margin-top: 2rem;
   text-align: center;
