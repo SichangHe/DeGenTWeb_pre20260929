@@ -216,6 +216,16 @@ class: text-center
 
 ---
 
+# Pilot proxy scores
+
+<img class="paper-figure" src="/paper/cdf_new_baseline_binoculars.png" alt="Page-score distributions for 12 Common Crawl proxy-negative sites and 13 generated Wix and B12 sites"/>
+
+<div class="source-note">Proxy negatives ≠ ground truth</div>
+
+<Footer />
+
+---
+
 # Observed years
 
 <img class="paper-figure" src="/paper/cc_start_year_site_llm_share.png" alt="Draft calls by first observation year"/>
