@@ -72,7 +72,7 @@ Steven Hé (Sīchàng)
 
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category composition in selected positive-call and non-positive groups"/>
 
-<div class="source-note">Selected groups. Categories ≠ motives.</div>
+<div class="source-note">Equal-sized groups; draft labels ≠ motives.</div>
 
 <Footer />
 
