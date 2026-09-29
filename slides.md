@@ -10,6 +10,7 @@ class: text-center
 
 # DeGenTWeb: A First Look at MGT-dominant Websites
 
+<!-- TODO: Put the footer into the template and rid it here -->
 <Footer />
 
 ---
@@ -22,21 +23,34 @@ class: text-center
 
 ---
 
-# What is MGT?
+- Hallucination?
+- Plagiarism?
+- Misinformation?
 
-<div class="mgt-definition">MGT = machine-generated text</div>
+---
 
-<div class="source-note">Includes templates, not just LLMs</div>
+- How much of the web is MGT
+    - Machine-generated text
+- What are these sites doing
 
 <Footer />
 
 ---
 
-# Three obstacles
+- How much of the web is MGT
+    - Machine-generated text
+- Mission impossible
 
-<div class="challenge-list">Text detectors err<br/>Web pages are noisy<br/>Ground truth is scarce</div>
+<Footer />
 
-<div class="source-note">Neither crawl nor search samples the whole web</div>
+---
+
+<!-- Don't need titles for every slide unless it does something -->
+<!-- TODO: Rid special classes for regular pages. Just do bullet points and hide the bullets -->
+- Text detectors inaccurate
+- Web content noisy
+- No ground truth
+- Cannot sample whole web
 
 <Footer />
 
@@ -47,6 +61,20 @@ class: text-center
 <div class="visual-pair"><img src="/prior/noise-example-002.png" alt="Recipe index from prior talk 3"/><img src="/prior/filter-example-002.png" alt="Privacy notice from prior talk 1"/></div>
 
 <Footer />
+
+---
+
+- Cannot tell ground truth
+- *SoTA forgeries are almost indistinguishable from “real” media* (Frank, SP2024)
+
+---
+
+Narrow down measured target
+
+- English prose-heavy sites
+    - ignore non-prose
+- Text dominated by MGT
+    - ignore LLM-polished
 
 ---
 
@@ -102,7 +130,17 @@ class: text-center
 
 <div class="plot-caption">Generated test sites</div>
 
-<svg class="test-size-panel" viewBox="0 105 1030 800" role="img" aria-label="Test-size study: five fixed classifiers' missed generated body-swap sites versus 25 to 400 test sites, with observed fifth-to-ninety-fifth percentile ranges over 30 samples; separate training cohort from previous slide"><defs><clipPath id="body-plot-clip"><rect x="0" y="105" width="1030" height="800"/></clipPath></defs><image href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026" clip-path="url(#body-plot-clip)"/><rect x="940" y="105" width="90" height="660" fill="white"/></svg>
+<svg class="test-size-panel" viewBox="0 105 1030 800" role="img"
+aria-label="Test-size study: five fixed classifiers'
+missed generated body-swap sites versus 25 to 400 test sites, with
+observed fifth-to-ninety-fifth percentile ranges over 30 samples;
+separate training cohort from
+previous slide"><defs><clipPath id="body-plot-clip"><rect x="0" y="105"
+width="1030"
+height="800"/></clipPath></defs><image
+href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026"
+clip-path="url(#body-plot-clip)"/><rect x="940" y="105" width="90" height="660"
+fill="white"/></svg>
 
 <div class="plot-caveat">Other cohort · fixed Wix/CC models</div>
 
@@ -112,7 +150,16 @@ class: text-center
 
 <div class="plot-caption">Historical-CC test sites</div>
 
-<svg class="test-size-panel" viewBox="1010 105 1186 800" role="img" aria-label="Test-size study: positive-call rate among historically negative-labeled Common Crawl sites versus 100 to 2000 test sites, with observed fifth-to-ninety-fifth percentile ranges over 30 samples; negative-labeled does not verify human authorship"><defs><clipPath id="cc-plot-clip"><rect x="1010" y="105" width="1186" height="800"/></clipPath></defs><image href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026" clip-path="url(#cc-plot-clip)"/></svg>
+<svg class="test-size-panel" viewBox="1010 105 1186 800" role="img"
+aria-label="Test-size study:
+positive-call rate among historically negative-labeled Common Crawl sites
+versus 100 to 2000 test sites, with
+observed fifth-to-ninety-fifth percentile ranges over 30 samples;
+negative-labeled does not verify human authorship"><defs><clipPath
+id="cc-plot-clip"><rect x="1010" y="105" width="1186"
+height="800"/></clipPath></defs><image
+href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026"
+clip-path="url(#cc-plot-clip)"/></svg>
 
 <div class="plot-caveat">2014 negative label ≠ verified human</div>
 
