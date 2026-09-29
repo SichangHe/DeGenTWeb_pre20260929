@@ -51,7 +51,19 @@ class: text-center
 
 ---
 
-Web content noise
+Cannot sample whole web
+
+- Limited budget
+
+---
+
+Text detectors inaccurate
+
+- TODO: cite some papers
+
+---
+
+Web content noisy
 
 <div class="visual-pair"><img src="/prior/noise-example-002.png" alt="Recipe index from prior talk 3"/><img src="/prior/filter-example-002.png" alt="Privacy notice from prior talk 1"/></div>
 
@@ -70,91 +82,20 @@ Cannot tell ground truth:
 
 ---
 
-We can still measure something useful
-
-- Detect sites dominated by MGT
-- Characterize them in bounded web samples
-
----
-
-Narrow down measured target
-
-- English prose-heavy sites
-    - ~~Listings, functionality sites~~
-- Text dominated by MGT
-    - ~~LLM-polished~~
-
----
-
-<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
-
----
-
-# Website detection pipeline
-
-<img class="wide-figure" src="/paper/degentweb_pipeline.png" alt="Sample, download, extract, filter, score, classify"/>
-
----
-
-<div class="pipeline-highlight" style="--focus-start:0%;--focus-end:15%"><img src="/paper/degentweb_pipeline.png" alt="Sampling is highlighted in the six-stage pipeline"/></div>
-
-- Sitemap
-- Wayback Machine Content Index
-- Common Crawl's archive index
-
----
-
-<div class="pipeline-highlight" style="--focus-start:33%;--focus-end:47%"><img src="/paper/degentweb_pipeline.png" alt="Content extraction is highlighted in the six-stage pipeline"/></div>
-
-<div class="extract-lead"><img src="/paper/trafilatura-logo.png" alt="Trafilatura logo"/><span>(ACL 2021)</span></div>
-
-- Reader-mode body text extraction
-- Not assets, markup, or layout
-
----
-
-<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
-
----
-
-<div class="pipeline-highlight" style="--focus-start:49%;--focus-end:62%"><img src="/paper/degentweb_pipeline.png" alt="Page filtering is highlighted in the six-stage pipeline"/></div>
-
-- Long enough: ≥200 tokens
-- Dolma Quality Filter
-- Repeated text: ≤50% bytes
-
----
-
-# Dolma Quality Filter (AI2 2024)
-
-- Reject excessive repetition and list-like text
-- Reject low linguistic quality
-- Relax punctuation-line cutoff for web boilerplate
-
----
-
-Aggregate pages into one site call
-
-- ≥15 eligible pages per site
-- Nine deciles of page-level Binoculars scores
-- Linear SVM assigns a positive or other call
-
----
-
 <ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li>Web content noisy</li><li class="active">No ground truth</li></ul>
 
 ---
 
 # Common Crawl (CC)
 
-- Largest archive of the open web
+- Largest public archive of the open web
 - Collected regularly since 2008
 
 ---
 
 # Negative baseline
 
-- Common Crawl archives from 2014
+- 2014 Common Crawl (CC) archives
     - predate modern language models
     - 10k sites
 - Common practice in LLM detection
@@ -169,21 +110,83 @@ Aggregate pages into one site call
 
 # AI Website builders
 
-- Generate sites with Wix.com/B12.io
-- Based on descriptions of real sites
-- Generate home pages and blog posts
-
----
-
-Need lots of clicking
+- xx Wix.com + xx B12.io
+- From descriptions of real sites
+- Home pages + blog posts
+- Lots of clicking
 
 ---
 
 # Swap existing site bodies
 
 - Retain layout/boilerplate
-- OpenRouter → text → swap body
+- Summarize → expand → swap
+- x,xxx sites
+
+---
+
+# Diverse body-swap sites
+
 - 8 LLMs: GPT-3.5/4/OSS-120B, Haiku 4.5, Sonnet 4/4.6, Mixtral, Llama
+
+---
+
+# Website detection pipeline
+
+<img class="wide-figure" style="margin-top: -2em;margin-bottom: -2em;" src="/paper/degentweb_pipeline.png" alt="Sample, download, extract, filter, score, classify"/>
+
+- Filter & aggregate signal
+- Accurate site-level classification
+
+---
+
+<div class="pipeline-highlight" style="--focus-start:0%;--focus-end:15%"><img src="/paper/degentweb_pipeline.png" alt="Sampling is highlighted in the six-stage pipeline"/></div>
+
+- Sitemap
+- Wayback Machine Content Index
+- Common Crawl's archive index
+
+---
+
+<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
+
+---
+
+<div class="pipeline-highlight" style="--focus-start:33%;--focus-end:47%"><img src="/paper/degentweb_pipeline.png" alt="Content extraction is highlighted in the six-stage pipeline"/></div>
+
+<div class="extract-lead"><img src="/paper/trafilatura-logo.png" alt="Trafilatura logo"/><span>(ACL 2021)</span></div>
+
+- Reader-mode body text extraction
+- No asset, markup, layout
+
+---
+
+TODO: Give a quoted example of extracted text from a listing page
+
+⇒ Narrow down target
+
+- English prose-heavy pages
+    - ~~Listings, functionality pages~~
+
+---
+
+<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
+
+---
+
+<div class="pipeline-highlight" style="--focus-start:49%;--focus-end:62%"><img src="/paper/degentweb_pipeline.png" alt="Page filtering is highlighted in the six-stage pipeline"/></div>
+
+- Long enough: ≥200 tokens
+- Repeated text: ≤50% bytes
+- Dolma Quality Filter
+
+---
+
+# Dolma Quality Filter (AI2 2024)
+
+<!-- TODO: Rework these. Very bad -->
+- Reject excessive repetition and list-like text
+- Reject low linguistic quality
 
 ---
 
@@ -191,29 +194,54 @@ Need lots of clicking
 
 ---
 
+# Binoculars (ICML 2024)
+
+TODO: Explain this roughly. The pipeline. Logo. Claim low FPR
+
+- ~~LLM-polished~~
+- Can be replaced
+
+---
+
+TODO: Page-level detector accuracy comparison plot, or rm this slide if cannot get
+
+---
+
 <img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
 
 <div class="cdf-caption">Select baseline sites.</div>
 
-Per-page scores vary
+---
+
+<img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
+
+<div class="cdf-caption">Select baseline sites.</div>
+
+- Per-page scores fluctuate
+- Site-wide distributions consistent
 
 ---
 
-Detector comparison: new-baseline scores pending
-
-- Compare detectors on the same Wix/CC2014 sites
-- Result not ready for this talk
+- Site-wide distributions consistent
+- ⇒ Detect MGT-dominant sites
 
 ---
 
-Do more detector scores help?
+<!-- TODO: pipeline figure -->
 
-- Current: Binoculars score deciles
-- Next: combined detector scores
-- Same held-out sites; result pending
+- Require ≥15 qualified pages per site
+- 9 deciles of page Binoculars scores
+- Linear support vector machine (SVM)
 
 ---
 
+Combine detector scores?
+
+TODO: Put in the results or rm slide
+
+---
+
+<!-- TODO: I cannot understand these 3 slides. Present these in a sane manner: what are the train/test splits? What are the FPR/FNR? I don't think we need additional plots/numbers other than the box plot -->
 Held-out generated sites
 
 <div class="bar-study"><div><strong>Wix</strong><span class="bar-track"><i style="width:82%"></i></span><b>41/50 · 82%</b></div><div><strong>B12</strong><span class="bar-track"><i class="second" style="width:87.2%"></i></span><b>34/39 · 87% median</b></div></div>
@@ -223,6 +251,7 @@ Held-out generated sites
 
 ---
 
+<!-- TODO: I cannot understand this slide -->
 Body swaps test new layouts
 
 - 1,142 / 1,172 detected, median over fixed runs
@@ -230,15 +259,13 @@ Body swaps test new layouts
 
 ---
 
-Historical-site proxy FPR
-
-- 40 positive calls / 40,000 held-out CC2014 decisions
-- 0.1% **proxy** false-positive rate
-- CC2014 labels do not verify human authorship
+- 40 positives / 40,000 held-out CC2014 decisions
+- 0.1% false positive rate
+<!-- - CC2014 labels do not verify human authorship. Shut up about this!! We already assume they are not MGT -->
 
 ---
 
-CC2014 calls across repeated classifier fits
+<!-- CC2014 calls across repeated classifier fits
 
 - htmlbible.com: positive in 1 / 3 fits
 - jeeps-for-sale.net: positive in 4 / 5 fits
@@ -246,43 +273,34 @@ CC2014 calls across repeated classifier fits
 
 <div class="visual-caption">Historical labels are proxies; authorship unverified</div>
 
----
+--- -->
 
-Why might old pages look generated?
+Why false positives?
 
-- Repeated templates and formulaic prose
-- Falcon-7B may have learned similar web text
-- **Memorization was not tested**
-
----
-
-Polished text is a different task
-
-- 327 / 328 polished sites not flagged
-- This is not a test of fully generated sites
+- Repeated templates & formulaic prose
+- Falcon-7B memorized similar text
 
 ---
 
+~~Polished text~~
+
+- Polish CC sites
+- 327/328 detected as negative
+
+---
+
+<!-- TODO: Split this plot into two, show the bottom one first, then the top one. -->
 <img class="paper-plot" src="/paper/body_swap_transfer_and_size_errors_split_1to1.png" alt="Paper figure: site-classifier transfer and training-size sensitivity across Wix, B12, body-swap, and CC2014 sites"/>
 
-<div class="visual-caption">Training-size and transfer study · held-out builder and CC2014 sites</div>
+<div class="visual-caption">Out-of-domain and in-domain false positive/negative rates.</div>
 
 ---
 
-<img class="paper-plot" src="/paper/fixed_training_vary_test_errors.png" alt="Separate test-size study: observed body-swap misses and historically negative-labeled Common Crawl positive calls, sampled at varying held-out test sizes for five fixed classifiers"/>
-
-<div class="visual-caption">Other cohort · 30 resamples · observed 5–95% range, not confidence intervals · 2014 authorship unverified</div>
+TODO: Plot of ID FPR/FNR with varying test sizes
 
 ---
 
-Wild-site calls remain uncalibrated
-
-- Later evaluation used a different fit
-- Stored wild-run history does not match it
-- Calls are not verified accuracy
-
----
-
+<!-- TODO: This is also presented extremely poorly. Follow the flow in the paper -->
 Newer models expose detector limits
 
 <img class="paper-plot" src="/paper/pangram_vs_binoculars.png" alt="Paper figure: Pangram AI percentage versus Binoculars score for 605 selected generated replacement texts"/>

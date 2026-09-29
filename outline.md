@@ -156,3 +156,4 @@
 - do not use old 144-site baseline
 - do not emphasize not whole web coverage
 - see `docs/ubiquitous_language.md`
+- always use Arabic numbers
