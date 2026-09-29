@@ -182,8 +182,8 @@ Need lots of clicking
 # Swap existing site bodies
 
 - Retain layout/boilerplate
-- OpenRouter/Bedrock → text → swap body
-- Eight LLMs: GPT-3.5/4/OSS-120B, Mixtral, Llama 3.3, Haiku 4.5, Sonnet 4/4.6
+- OpenRouter → text → swap body
+- 8 LLMs: GPT-3.5/4/OSS-120B, Haiku 4.5, Sonnet 4/4.6, Mixtral, Llama
 
 ---
 
@@ -191,11 +191,11 @@ Need lots of clicking
 
 ---
 
-One page cannot describe a site
-
 <img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
 
-<div class="cdf-caption">Selected 5 CC2014 + 5 Wix + 5 B12 sites · 15 pages per site · not an accuracy estimate</div>
+<div class="cdf-caption">Select baseline sites.</div>
+
+Per-page scores vary
 
 ---
 
