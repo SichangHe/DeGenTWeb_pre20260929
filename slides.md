@@ -58,7 +58,7 @@ Web content noise
 ---
 
 Cannot tell ground truth:
-- *SoTA forgeries are almost indistinguishable from “real” media* (Frank, SP2024)
+- *SoTA forgeries are almost indistinguishable from “real” media* (SP 2024)
 - …Unless we generated
 
 ---
@@ -106,32 +106,38 @@ Narrow down measured target
 
 <div class="pipeline-highlight" style="--focus-start:33%;--focus-end:47%"><img src="/paper/degentweb_pipeline.png" alt="Content extraction is highlighted in the six-stage pipeline"/></div>
 
-- Trafilatura: reader-mode prose
+<div class="extract-lead"><img src="/paper/trafilatura-logo.png" alt="Trafilatura logo"/><span>(ACL 2021)</span></div>
+
+- Reader-mode body text extraction
 - Not assets, markup, or layout
+
+---
+
+<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
 
 ---
 
 <div class="pipeline-highlight" style="--focus-start:49%;--focus-end:62%"><img src="/paper/degentweb_pipeline.png" alt="Page filtering is highlighted in the six-stage pipeline"/></div>
 
-- Remove poor-quality and repeated text
-- Abstain if fewer than 15 pages survive
+- Long enough: ≥200 tokens
+- Dolma Quality Filter
+- Repeated text: ≤50% bytes
 
 ---
 
-Which pages count?
+# Dolma Quality Filter (AI2 2024)
 
-- Extracted English prose: ≥200 tokens
-- Dolma text-quality filter
-- Repeated text: ≤50% of extracted bytes
+- Reject excessive repetition and list-like text
+- Reject low linguistic quality
+- Relax punctuation-line cutoff for web boilerplate
+
+---
+
+Aggregate pages into one site call
+
 - ≥15 eligible pages per site
-
----
-
-No label ≠ negative label
-
-<img class="method-plot" src="/paper/cc2014_site_attrition.png" alt="Among 10,000 archived CC2014 sites with 15 source pages, 2,917 reached classification; other processing and page filters abstain"/>
-
-<div class="visual-caption">2014 cohort · missing extractions do not prove ineligible source text</div>
+- Nine deciles of page-level Binoculars scores
+- Linear SVM assigns a positive or other call
 
 ---
 
@@ -139,35 +145,45 @@ No label ≠ negative label
 
 ---
 
-We need a labeled baseline
+# Common Crawl (CC)
 
-- Generate Wix sites from company topics
-- Generate B12 sites from personal-blog topics
-- Hold out entire generated sites for evaluation
-
----
-
-Build whole generated sites
-
-<div class="site-examples"><img src="/prior/wix-post-creator-original.jpg" alt="Original Wix AI Post Creator embedded image from the prior talk"/><img src="/prior/wix-generated-example-original.jpg" alt="Original embedded image of the Joint Journey generated Wix site from the prior talk"/></div>
-
-<div class="visual-caption">Original Wix UI and generated-site images · prior talk 3</div>
+- Largest archive of the open web
+- Collected regularly since 2008
 
 ---
 
-Body swaps test new layouts
+# Negative baseline
 
-- Keep original templates
-- Replace article prose with generated text
-- Test new layouts, not a new builder
+- Common Crawl archives from 2014
+    - predate modern language models
+    - 10k sites
+- Common practice in LLM detection
 
 ---
 
-Historical controls are proxies
+# AI Website builders
 
-- CC2014 pages predate modern public LLMs
-- Their individual authorship is not verified
-- A positive site call is a **proxy** false positive
+<div class="site-examples"><img src="/prior/wix-post-creator-original.jpg" alt="Original Wix AI Post Creator image embedded in the previous presentation"/><img src="/prior/wix-generated-example-original.jpg" alt="Original generated Wix site image embedded in the previous presentation"/></div>
+
+---
+
+# AI Website builders
+
+- Generate sites with Wix.com/B12.io
+- Based on descriptions of real sites
+- Generate home pages and blog posts
+
+---
+
+Need lots of clicking
+
+---
+
+# Swap existing site bodies
+
+- Retain layout/boilerplate
+- OpenRouter/Bedrock → text → swap body
+- Eight LLMs: GPT-3.5/4/OSS-120B, Mixtral, Llama 3.3, Haiku 4.5, Sonnet 4/4.6
 
 ---
 
@@ -180,14 +196,6 @@ One page cannot describe a site
 <img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
 
 <div class="cdf-caption">Selected 5 CC2014 + 5 Wix + 5 B12 sites · 15 pages per site · not an accuracy estimate</div>
-
----
-
-Site-level decision
-
-- Binoculars scores each retained page
-- Nine score deciles summarize the site
-- A linear SVM assigns the site call
 
 ---
 
@@ -403,3 +411,15 @@ Backup: denominator details
 - CC: 409,805 retained; 94,908 qualified
 - Bing: 59,046 result sites; 18,169 qualified
 - Top-ten calls: 4,532 / 10,000 matched queries
+
+---
+
+<img class="method-plot" src="/paper/cc2014_site_attrition.png" alt="Among 10,000 archived 2014 sites, 2,917 reach classification after extraction and page filters"/>
+
+---
+
+Missing extractions ≠ negative labels
+
+- 10,000 archived sites; 15 source pages each
+- 2,776 sites lack 15 processed extractions
+- Processing gap, not proven ineligibility
