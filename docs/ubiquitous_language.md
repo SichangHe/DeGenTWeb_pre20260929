@@ -1,0 +1,3 @@
+- `positives`: samples detected as positive
+    - `positive rate`: portion of samples detected as positive
+    - deprecated: `positive calls`

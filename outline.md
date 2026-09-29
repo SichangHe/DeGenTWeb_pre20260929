@@ -59,7 +59,7 @@
         - text detectors inaccurate
             - bar chart accuracies among detectors
                 - 🤖pending matched multi-detector scores for the new Wix/CC 2014 baseline
-                - 🤖do not substitute the older 144-site detector comparison
+                <!-- DO NOT use the old 144-site baseline. Use the new baseline -->
             - overlapping page-score distributions
                 - insight: classify distributions, not individual pages
         - use 9 score deciles as feature vector
@@ -97,20 +97,21 @@
             - Pangram vs Binoculars on Sonnet 4/4.6
                 - 🤖selected generated-only texts do not provide matched FPRs
 - findings in the wild
-    - 🤖Common Crawl archive sample
+    - Common Crawl archive sample
         - estimate prevalence on open web
         - 🤖409,805 retained subdomains
             - 🤖94,908 qualifying
-        - 🤖6.0% positive calls among qualifying sites
-            - 🤖this archive sample does not identify open-web prevalence
+            - short filter breakdown
+        - 🤖6.0% positive rate among qualifying sites
         - 🤖archive-date score shifts
             - 🤖1,486/26,414 sites meet the defined shift criterion
             - 🤖234 expected after 200 within-site shuffles
-            - 🤖shifts do not establish LLM adoption
+            - statistically indicate LLM adoption
     - 🤖Bing how-to search sample
         - estimate prevalence in search results
         - 🤖59,046 result sites
             - 🤖18,169 qualifying
+            - short filter breakdown
         - 🤖15.4% positive calls among qualifying sites
         - 🤖45.3% of queries have a matched positive call in the top ten
         - 🤖64.8% have one in the top twenty
@@ -123,12 +124,21 @@
         - 🤖illustrate with original sampled-site captures
             - 🤖caption with site and snapshot provenance, not verified authorship
     - 🤖draw simple paper-colored bar charts for site-call shares and category proxy
+    <!-- TODO: Feels like we have more good results we have add? -->
 - contributions
-    - 🤖a site-level method that filters noisy pages and aggregates detector scores
-    - 🤖a generated-site and historical-proxy baseline with held-out checks
-    - 🤖measured calls in two bounded samples, not whole-web prevalence
-    - 🤖new models still require detector-specific validation
+    - low-FPR site-level MGT detection
+    - large & diverse MGT site baseline
+    - rising prevalence in CC
+    - high prevalence in Bing results
+    <!-- TODO: Deeper findings -->
 - backup slides
     - baseline construction prompts
     - CC 2014 negatives and training/test-size study details
     - 🤖search matching and classifier-call denominators
+
+## Notes
+
+- assume old CC are negatives
+- do not use old 144-site baseline
+- do not emphasize not whole web coverage
+- see `docs/ubiquitous_language.md`

@@ -18,6 +18,7 @@ class: text-center
 
 ---
 
+<!-- TODO: Don't do these one-by-one animations. Just show them all at once. -->
 <v-clicks>
 
 - Hallucination?
@@ -28,13 +29,13 @@ class: text-center
 
 ---
 
-Which page is generated?
+<!-- Which page is generated?
 
 <div class="site-examples"><img src="/prior/example-a-original.jpg" alt="Original embedded website capture A from the prior talk: a health article"/><img src="/prior/example-b-original.jpg" alt="Original embedded website capture B from the prior talk: an article about snow blowers"/></div>
 
 <div class="visual-caption">Original page images from prior talk 3 · authorship unknown</div>
 
----
+--- -->
 
 - How much of the web is MGT
     - Machine-generated text
@@ -50,10 +51,10 @@ Which page is generated?
 
 <v-clicks>
 
+- Cannot sample whole web
 - Text detectors inaccurate
 - Web content noisy
 - No ground truth
-- Cannot sample whole web
 
 </v-clicks>
 
