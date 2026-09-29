@@ -357,7 +357,7 @@ Bing: qualifying sites
 
 ---
 
-TODO: Prevalence curve for CC
+TODO: Prevalence vs half-year curve for CC from paper
 
 ---
 
@@ -375,7 +375,9 @@ TODO: Prevalence curve for CC
 
 --- -->
 
-<img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have an MGT-dominant site in the top ten and 64.8% in the top twenty"/>
+Prevalent in Bing search
+
+<img class="wild-plot" style="margin-top: -1em" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have an MGT-dominant site in the top ten and 64.8% in the top twenty"/>
 
 ---
 
@@ -409,7 +411,7 @@ Compare equally sized site groups
 
 ---
 
-<!-- TODO: This plot should say "MGT-" instead of "LLM-". I think it has been fixed and you just need to find it -->
+<!-- TODO: The only thing that should have changed was the "LLM-" revert all other changes of this plot -->
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
 ---
