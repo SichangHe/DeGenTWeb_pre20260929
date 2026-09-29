@@ -325,17 +325,18 @@ Why old sites positive?
 
 ---
 
-Common Crawl: saved pages
+<!-- We don't need this -->
+<!-- Common Crawl: saved pages
 
 <img class="filter-plot" src="/paper/filter_pages_cc.png" alt="Common Crawl saved filtered pages: 9,107,806 stored, 8,605,649 with valid scores, 7,440,696 on qualifying sites"/>
 
----
+--- -->
 
-Common Crawl: qualifying sites
+<!-- Common Crawl: qualifying sites
 
 <img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/>
 
----
+--- -->
 
 Bing: page filtering
 
@@ -349,7 +350,7 @@ Bing: qualifying sites
 
 ---
 
-TODO: Add (5,643/94,908) and 
+<!-- TODO: Add (5,643/94,908) and (xxxx/18,169) after the percentages and make the gap between the bars smaller -->
 <img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Sites classified as MGT-dominant: 6.0% in Common Crawl, 15.4% in Bing search results"/>
 
 ---
@@ -367,12 +368,6 @@ TODO: Add (5,643/94,908) and
 - 234 mean after 200 within-site date shuffles
 
 --- -->
-
-Bing result sites: 15.4% MGT-dominant
-
-- 18,169 sites with ≥15 eligible pages
-
----
 
 <img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have an MGT-dominant site in the top ten and 64.8% in the top twenty"/>
 
