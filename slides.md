@@ -70,8 +70,10 @@ Cannot tell ground truth:
 
 ---
 
-TODO: move this all the way back to when we discuss the in-the-wild experiments. At least mention CC is largest corpus
-<ul class="challenge-list-plain"><li class="active">Cannot sample whole web</li><li>Text detectors inaccurate</li><li>Web content noisy</li><li>No ground truth</li></ul>
+We can still measure something useful
+
+- Detect sites dominated by MGT
+- Characterize them in bounded web samples
 
 ---
 
@@ -88,17 +90,15 @@ Narrow down measured target
 
 ---
 
-# Six-stage pipeline
+# Website detection pipeline
 
 <img class="wide-figure" src="/paper/degentweb_pipeline.png" alt="Sample, download, extract, filter, score, classify"/>
 
 ---
 
-Sample pages
-
 <div class="pipeline-highlight" style="--focus-start:0%;--focus-end:15%"><img src="/paper/degentweb_pipeline.png" alt="Sampling is highlighted in the six-stage pipeline"/></div>
 
-- Site sitemap
+- Sitemap
 - Wayback Machine index
 - Common Crawl's archive index
 
@@ -297,6 +297,17 @@ Findings in two samples
 
 - Common Crawl archive sample
 - Bing how-to search sample
+
+---
+
+<ul class="challenge-list-plain"><li class="active">Cannot sample whole web</li><li>Text detectors inaccurate</li><li>Web content noisy</li><li>No ground truth</li></ul>
+
+---
+
+Common Crawl is the largest publicly available web sample
+
+- Still not a census of the open web
+- Analyze only subdomains with ≥15 eligible pages
 
 ---
 
