@@ -10,22 +10,29 @@ class: text-center
 
 # DeGenTWeb: A First Look at MGT-dominant Websites
 
-<!-- TODO: Put the footer into the template and rid it here -->
-<Footer />
-
 ---
 
 <div class="news-pair"><img src="/prior/news-wired.jpg" alt="WIRED headline: AI Slop Is Flooding Medium"/><img src="/prior/news-rolling-stone.jpg" alt="Rolling Stone headline: Facebook’s AI-Generated Spam Problem Is Worse Than You Realize"/></div>
 
 <img class="news-feature" src="/prior/news-mit-tech-review.jpg" alt="MIT Technology Review headline: Junk websites filled with AI-generated text are pulling in money from programmatic ads"/>
 
-<Footer />
-
 ---
+
+<v-clicks>
 
 - Hallucination?
 - Plagiarism?
 - Misinformation?
+
+</v-clicks>
+
+---
+
+Which page is generated?
+
+<div class="site-examples"><img src="/prior/example-a-original.jpg" alt="Original embedded website capture A from the prior talk: a health article"/><img src="/prior/example-b-original.jpg" alt="Original embedded website capture B from the prior talk: an article about snow blowers"/></div>
+
+<div class="visual-caption">Original page images from prior talk 3 · authorship unknown</div>
 
 ---
 
@@ -33,34 +40,28 @@ class: text-center
     - Machine-generated text
 - What are these sites doing
 
-<Footer />
-
 ---
 
 - How much of the web is MGT
     - Machine-generated text
 - Mission impossible
 
-<Footer />
-
 ---
 
-<!-- Don't need titles for every slide unless it does something -->
-<!-- TODO: Rid special classes for regular pages. Just do bullet points and hide the bullets -->
+<v-clicks>
+
 - Text detectors inaccurate
 - Web content noisy
 - No ground truth
 - Cannot sample whole web
 
-<Footer />
+</v-clicks>
 
 ---
 
 # Page noise
 
 <div class="visual-pair"><img src="/prior/noise-example-002.png" alt="Recipe index from prior talk 3"/><img src="/prior/filter-example-002.png" alt="Privacy notice from prior talk 1"/></div>
-
-<Footer />
 
 ---
 
@@ -78,179 +79,301 @@ Narrow down measured target
 
 ---
 
+What we contribute
+
+- Filter noisy pages and aggregate site scores
+- Check generated builders against historical controls
+- Measure two bounded samples of websites
+
+---
+
 # Six-stage pipeline
 
 <img class="wide-figure" src="/paper/degentweb_pipeline.png" alt="Sample, download, extract, filter, score, classify"/>
 
-<Footer />
+---
+
+Sample pages
+
+<div class="pipeline-highlight" style="--focus-start:0%;--focus-end:15%"><img src="/paper/degentweb_pipeline.png" alt="Sampling is highlighted in the six-stage pipeline"/></div>
+
+- Site sitemap
+- Wayback Machine index
+- Common Crawl's archive index
 
 ---
 
-# Which pages count?
+Extract main text
 
-<div class="challenge-list">English prose · ≥200 tokens<br/>No repeated boilerplate<br/>≥15 eligible pages per site</div>
+<div class="pipeline-highlight" style="--focus-start:32%;--focus-end:45%"><img src="/paper/degentweb_pipeline.png" alt="Content extraction is highlighted in the six-stage pipeline"/></div>
 
-<div class="source-note">Other sites remain unclassified</div>
-
-<Footer />
-
----
-
-# Site-level decision
-
-<div class="hero">Binoculars page scores<br/>→ score distribution<br/>→ linear SVM site call</div>
-
-<Footer />
+- Trafilatura: reader-mode prose
+- Not images, code, video, or layout
 
 ---
 
-# Evaluation
+Filter page noise
 
-<div class="two-stats"><div><span class="stat">82%</span><br/>Wix held out · 41/50</div><div><span class="stat">87%</span><br/>B12 median · 34/39</div></div>
+<div class="pipeline-highlight" style="--focus-start:49%;--focus-end:62%"><img src="/paper/degentweb_pipeline.png" alt="Page filtering is highlighted in the six-stage pipeline"/></div>
 
-<div class="source-note">DRAFT · old wild calls remain uncalibrated</div>
-
-<Footer />
+- Remove poor-quality and repeated text
+- Abstain if fewer than 15 pages survive
 
 ---
 
-<div class="two-stats"><div><span class="stat">97.4%</span><br/>body-swap median detected</div><div><span class="stat">40/40k</span><br/>CC2014 proxy positive calls</div></div>
+Which pages count?
 
-<div class="source-note">2014 labels do not verify human authorship</div>
+<v-clicks>
 
-<Footer />
+- Extracted English prose: ≥200 tokens
+- Dolma text-quality filter
+- Repeated text: ≤50% of extracted bytes
+- ≥15 eligible pages per site
+
+</v-clicks>
+
+---
+
+No label ≠ negative label
+
+<img class="method-plot" src="/paper/cc2014_site_attrition.png" alt="Among 10,000 archived CC2014 sites with 15 source pages, 2,917 reached classification; other processing and page filters abstain"/>
+
+<div class="visual-caption">2014 cohort · missing extractions do not prove ineligible source text</div>
+
+---
+
+We need a labeled baseline
+
+- Generate Wix sites from company topics
+- Generate B12 sites from personal-blog topics
+- Hold out entire generated sites for evaluation
+
+---
+
+Build whole generated sites
+
+<div class="site-examples"><img src="/prior/wix-post-creator-original.jpg" alt="Original Wix AI Post Creator embedded image from the prior talk"/><img src="/prior/wix-generated-example-original.jpg" alt="Original embedded image of the Joint Journey generated Wix site from the prior talk"/></div>
+
+<div class="visual-caption">Original Wix UI and generated-site images · prior talk 3</div>
+
+---
+
+Body swaps test new layouts
+
+- Keep original templates
+- Replace article prose with generated text
+- Test new layouts, not a new builder
+
+---
+
+Historical controls are proxies
+
+- CC2014 pages predate modern public LLMs
+- Their individual authorship is not verified
+- A positive site call is a **proxy** false positive
+
+---
+
+One page is not enough
+
+<img class="paper-plot cdf-plot" src="/paper/cdf_baseline_svm_scores.png" alt="Overlapping page-score distributions across selected baseline site types"/>
+
+<div class="visual-caption">Overlapping page scores → aggregate at the site level</div>
+
+---
+
+Why aggregate page scores?
+
+- Earlier 144-site baseline: 92.8% best page accuracy
+- 100% mean site accuracy on that baseline
+- Not a substitute for held-out builder tests
+
+---
+
+Site-level decision
+
+- Binoculars scores each retained page
+- Nine score deciles summarize the site
+- A linear SVM assigns the site call
+
+---
+
+Detector-comparison chart: awaiting new-baseline scores
+
+- Older 144-site comparison is **not** new-baseline validation
+- No matched multi-detector scores for the new Wix/CC2014 cohort yet
+
+---
+
+Do more detector scores help?
+
+- Current: Binoculars score deciles
+- Next: combined detector scores
+- Same held-out sites; result pending
+
+---
+
+Held-out generated sites
+
+<div class="bar-study"><div><strong>Wix</strong><span class="bar-track"><i style="width:82%"></i></span><b>41/50 · 82%</b></div><div><strong>B12</strong><span class="bar-track"><i class="second" style="width:87.2%"></i></span><b>34/39 · 87% median</b></div></div>
+
+- Wix: same builder
+- B12: new builder and site type
+
+---
+
+Body swaps test new layouts
+
+- 1,142 / 1,172 detected, median over fixed runs
+- 97.4% for sampled layouts and generation models
+
+---
+
+Historical-site proxy FPR
+
+- 40 positive calls / 40,000 held-out CC2014 decisions
+- 0.1% **proxy** false-positive rate
+- CC2014 labels do not verify human authorship
+
+---
+
+CC2014 calls across repeated classifier fits
+
+- htmlbible.com: positive in 1 / 3 fits
+- jeeps-for-sale.net: positive in 4 / 5 fits
+- lawnmowersforsale.net: positive in 4 / 5 fits
+
+<div class="visual-caption">Historical labels are proxies; authorship unverified</div>
+
+---
+
+Why might old pages look generated?
+
+- Repeated templates and formulaic prose
+- Falcon-7B may have learned similar web text
+- **Memorization was not tested**
+
+---
+
+Polished text is a different task
+
+- 327 / 328 polished sites not flagged
+- This is not a test of fully generated sites
 
 ---
 
 <img class="paper-plot" src="/paper/body_swap_transfer_and_size_errors_split_1to1.png" alt="Paper figure: site-classifier transfer and training-size sensitivity across Wix, B12, body-swap, and CC2014 sites"/>
 
-<Footer />
+<div class="visual-caption">Training-size and transfer study · held-out builder and CC2014 sites</div>
 
 ---
 
-<div class="plot-caption">Generated test sites</div>
+<img class="paper-plot" src="/paper/fixed_training_vary_test_errors.png" alt="Separate test-size study: observed body-swap misses and historically negative-labeled Common Crawl positive calls, sampled at varying held-out test sizes for five fixed classifiers"/>
 
-<svg class="test-size-panel" viewBox="0 105 1030 800" role="img"
-aria-label="Test-size study: five fixed classifiers'
-missed generated body-swap sites versus 25 to 400 test sites, with
-observed fifth-to-ninety-fifth percentile ranges over 30 samples;
-separate training cohort from
-previous slide"><defs><clipPath id="body-plot-clip"><rect x="0" y="105"
-width="1030"
-height="800"/></clipPath></defs><image
-href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026"
-clip-path="url(#body-plot-clip)"/><rect x="940" y="105" width="90" height="660"
-fill="white"/></svg>
-
-<div class="plot-caveat">Other cohort · fixed Wix/CC models</div>
-
-<Footer />
+<div class="visual-caption">Other cohort · 30 resamples · observed 5–95% range, not confidence intervals · 2014 authorship unverified</div>
 
 ---
 
-<div class="plot-caption">Historical-CC test sites</div>
+Wild-site calls remain uncalibrated
 
-<svg class="test-size-panel" viewBox="1010 105 1186 800" role="img"
-aria-label="Test-size study:
-positive-call rate among historically negative-labeled Common Crawl sites
-versus 100 to 2000 test sites, with
-observed fifth-to-ninety-fifth percentile ranges over 30 samples;
-negative-labeled does not verify human authorship"><defs><clipPath
-id="cc-plot-clip"><rect x="1010" y="105" width="1186"
-height="800"/></clipPath></defs><image
-href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026"
-clip-path="url(#cc-plot-clip)"/></svg>
-
-<div class="plot-caveat">2014 negative label ≠ verified human</div>
-
-<Footer />
+- Later evaluation used a different fit
+- Stored wild-run history does not match it
+- Calls are not verified accuracy
 
 ---
 
-<img class="paper-plot" src="/paper/cdf_baseline_svm_scores.png" alt="Paper figure: baseline site score distributions and overlap"/>
-
-<Footer />
-
----
-
-# CC denominator
-
-<div class="denominator">409,805 retained<br/>↓<br/>94,908 qualifying<br/>↓<br/>6.0% positive calls ≠ whole web</div>
-
-<Footer />
-
----
-
-# Two sampling frames
-
-<div class="two-stats"><div><span class="stat">6.0%</span><br/>CC 2020–25 · 94,908 qualifying</div><div><span class="stat">15.4%</span><br/>Bing how-to · 18,169 qualifying</div></div>
-
-<div class="source-note">Classifier calls ≠ web prevalence</div>
-
-<Footer />
-
----
-
-<div class="two-stats"><div><span class="stat">45.3%</span><br/>queries · top 10</div><div><span class="stat">64.8%</span><br/>queries · top 20</div></div>
-
-<div class="source-note">≥1 matched positive call · unclassified results unknown</div>
-
-<Footer />
-
----
-
-<img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of changes in detector scores over page dates, without attributing cause"/>
-
-<div class="source-note">Score shifts ≠ proof of LLM adoption</div>
-
-<Footer />
-
----
-
-# Selected categories
-
-<img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
-
-<div class="source-note">Draft calls ≠ truth; labels ≠ motives</div>
-
-<Footer />
-
----
-
-# Selected group differences
-
-<div class="challenge-list">CC: more services and SaaS among positive calls<br/>Bing: little separation on the incentive proxy</div>
-
-<div class="source-note">Equal-sized groups · not a web-wide mix</div>
-
-<Footer />
-
----
+Newer models expose detector limits
 
 <img class="paper-plot" src="/paper/pangram_vs_binoculars.png" alt="Paper figure: Pangram AI percentage versus Binoculars score for 605 selected generated replacement texts"/>
 
-<Footer />
+---
+
+The detector matters
+
+- Binoculars max-F1: 470 / 605 selected generated texts flagged
+- Pangram: 594 / 605 returned AI labels
+- Selected positives cannot compare matched false-positive rates
 
 ---
 
-<div class="two-stats"><div><span class="stat">470/605</span><br/>Binoculars · max-F1 calls</div><div><span class="stat">594/605</span><br/>Pangram · AI labels</div></div>
+Findings in the wild
 
-<div class="source-note">Selected generated texts · no matched false-positive rates</div>
-
-<Footer />
-
----
-
-# Takeaway
-
-<div class="hero">Calls among qualifying sites<br/>≠ prevalence across the web</div>
-
-<Footer />
+- Common Crawl archive sample
+- Bing how-to search sample
+- Neither is a whole-web census
 
 ---
 
-# Backup slides to prepare
+Common Crawl: count who could be classified
 
-<div class="challenge-list">Filter attrition<br/>Held-out builder & CC2014 checks<br/>Search-rank and category denominators</div>
+- 409,805 retained subdomains, 2020–May 2025
+- 94,908 have ≥15 qualifying pages
+- The rest receive no site call
 
-<Footer />
+---
+
+Bing: count who could be classified
+
+- 59,046 distinct search-result sites
+- 18,169 have enough eligible pages
+- 15.4% positive calls **among the qualifying sites**
+
+---
+
+<img class="wild-plot" src="/paper/qualified_site_positive_calls.png" alt="Paper-style comparison: positive classifier calls among 94,908 qualifying Common Crawl subdomains and 18,169 qualifying Bing result sites; separate sampling frames, not web-wide prevalence"/>
+
+---
+
+<img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Paper-style comparison: of 10,000 Bing how-to queries, 45.3 percent have a matched positive call in the top ten; 64.8 percent in the top twenty; unclassified results remain unknown"/>
+
+---
+
+Some archived pages shift in score
+
+- 1,486 / 26,414 sites meet the archive-date shift criterion
+- 234 expected under within-site date shuffling
+- Genre and selection limit the interpretation
+
+---
+
+<img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of page-score shifts over modification dates; this figure does not prove LLM adoption"/>
+
+<div class="visual-caption">Illustrative modification-date curves · shifts do not prove LLM adoption</div>
+
+---
+
+What do selected site groups contain?
+
+<img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
+
+<div class="visual-caption">Equal-sized comparison groups · not the web's category mix</div>
+
+---
+
+<img class="wild-plot" src="/paper/selected_cc_financial_incentive.png" alt="Paper-style comparison: clear-financial-incentive category proxy in selected equal-size positive and other-call Common Crawl site groups, not actual site motivations"/>
+
+---
+
+What this work contributes
+
+- Filter noisy pages
+- Aggregate scores across each site
+- Test builders and historical proxies
+- Study two bounded wild-site samples
+- Not whole-web prevalence
+
+---
+
+Backup: builder design
+
+- Wix: company topics, generated names and blog prompts
+- B12: personal-blog topics, separate builder
+- Body swaps: real layouts with generated article bodies
+
+---
+
+Backup: denominator details
+
+- CC: 409,805 retained; 94,908 qualified
+- Bing: 59,046 result sites; 18,169 qualified
+- Top-ten calls: 4,532 / 10,000 matched queries

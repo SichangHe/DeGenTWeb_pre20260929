@@ -38,7 +38,7 @@
             - Sitemap
             - Wayback Machine Content Index
         - extract main text (pipeline figure…)
-            - Tranfilatura (logo)
+            - Trafilatura (logo)
         - filtering (pipeline figure…)
             - English text, ≥200 tokens
             - Dolma Quality Filter (details)
@@ -48,6 +48,7 @@
     - address lack of ground truth
         - generate Wix and B12 baseline sites from real site topics
             - (somewhat detailed explanation)
+            - 🤖show original Wix creator and generated-site captures from prior talk 3
         - generate body-swap sites from real sites/pages
             - (somewhat detailed explanation)
         - 2014 Common Crawl (CC) sites as proxy negatives
@@ -56,45 +57,78 @@
     - compensate for text detector inaccuracies
         - score each qualified page with Binoculars
         - text detectors inaccurate
-            <!-- TODO: Let a dw agent recompute those using this new baseline and plot using plotting config used in paper -->
             - bar chart accuracies among detectors
+                - 🤖pending matched multi-detector scores for the new Wix/CC 2014 baseline
+                - 🤖do not substitute the older 144-site detector comparison
             - overlapping page-score distributions
                 - insight: classify distributions, not individual pages
         - use 9 score deciles as feature vector
         - train a linear SVM classifier on feature vectors
+        - multiple detectors’ scores for the SVM
+            - 🤖compare the same held-out groups against Binoculars alone
+            - 🤖report effectiveness difference only after new-baseline scoring
     - does it work (bar chart/ box plot for each)
         - in-domain
+            - 🤖held-out Wix: 41/50 detected
         - out-of-domain
+            - 🤖B12: median 34/39 detected
         - on more data
+            - 🤖body-swap: median 1,142/1,172 detected
         - compare with page level
+            - 🤖site-level score distributions outperform a single page threshold on the baseline
         - on LLM-polished sites
-        <!-- - TODO: call it FPR, not positive call rate -->
+            - 🤖327/328 not flagged in production-filtered checks
+        - 🤖proxy FPR on held-out CC 2014 sites
+            - 🤖40/40,000 positive decisions, conditional on proxy-negative labels
     - understanding limitations
-        <!-- TODO: get a dw agent to do this -->
         - breakdown of disqualified CC 2014 sites
+            - 🤖10,000 archived sites; 2,917 reach classification
+            - 🤖2,776 lack enough processed extractions
+                - 🤖processing gaps do not prove source ineligibility
+            - 🤖2,928 fail Dolma; 1,107 fail token count; 272 fail repetition
         - worse FNR on newer LLMs
+        - 🤖older pages can receive positive calls
+            - 🤖held-out CC2014 examples: htmlbible.com, jeeps-for-sale.net, lawnmowersforsale.net
+                - 🤖15 archived pages per site; positive calls vary across repeated fits
+            - 🤖formulaic or templated prose may resemble model training text
+                - 🤖Falcon-7B memorization is an untested hypothesis, not an observed cause
+            - 🤖separate pre-ChatGPT CC sample has 103 positive-call cases, not the 40/40,000 decision cohort
         - accuracy-cost tradeoff
             - Pangram vs Binoculars on Sonnet 4/4.6
+                - 🤖selected generated-only texts do not provide matched FPRs
 - findings in the wild
-    <!-- TODO: Make this part more meaty. Try to cover the good stuff in the paper -->
-    <!-- TODO: Plot bar charts of some of these even if there are only 1 or 2 bars, following plotting conventions in the paper. -->
     - 🤖Common Crawl archive sample
         - estimate prevalence on open web
         - 🤖409,805 retained subdomains
             - 🤖94,908 qualifying
         - 🤖6.0% positive calls among qualifying sites
+            - 🤖this archive sample does not identify open-web prevalence
+        - 🤖archive-date score shifts
+            - 🤖1,486/26,414 sites meet the defined shift criterion
+            - 🤖234 expected after 200 within-site shuffles
+            - 🤖shifts do not establish LLM adoption
     - 🤖Bing how-to search sample
         - estimate prevalence in search results
         - 🤖59,046 result sites
             - 🤖18,169 qualifying
         - 🤖15.4% positive calls among qualifying sites
         - 🤖45.3% of queries have a matched positive call in the top ten
+        - 🤖64.8% have one in the top twenty
+        - 🤖unclassified results remain unknown
     - 🤖characterize selected site groups
-        <!-- TODO: This is where you put in the screenshots -->
         - 🤖compare equal-sized positive and non-positive groups
         - 🤖show category differences without inferring motives
-        - 🤖show archive-date score shifts without asserting their cause
+            - 🤖CC clear-incentive proxy: 78.8% versus 55.8%
+            - 🤖search proxy separates groups much less
+        - 🤖illustrate with original sampled-site captures
+            - 🤖caption with site and snapshot provenance, not verified authorship
+    - 🤖draw simple paper-colored bar charts for site-call shares and category proxy
 - contributions
+    - 🤖a site-level method that filters noisy pages and aggregates detector scores
+    - 🤖a generated-site and historical-proxy baseline with held-out checks
+    - 🤖measured calls in two bounded samples, not whole-web prevalence
+    - 🤖new models still require detector-specific validation
 - backup slides
     - baseline construction prompts
     - CC 2014 negatives and training/test-size study details
+    - 🤖search matching and classifier-call denominators
