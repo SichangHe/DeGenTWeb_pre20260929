@@ -46,8 +46,9 @@
   - 🤖little Bing separation on the financial-incentive proxy
   - 🤖category and monetization proxies do not establish motives
 - 🤖where the measurement stops
-  - 🤖605 selected new-model generated texts test detector shelf life
-  - 🤖Binoculars calls 470 positive; Pangram calls 594 positive
+  - 🤖605 selected Sonnet 4/4.6 generated texts test detector shelf life
+  - 🤖Binoculars max-F1 calls 470 positive; Pangram labels 594 as AI
+    - 🤖selected positives cannot compare matched false-positive rates
   - 🤖new validation does not calibrate earlier wild-site calls
   - 🤖classifier calls are not whole-web prevalence or verified truth
 - 🤖backup slides to prepare

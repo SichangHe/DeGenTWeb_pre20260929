@@ -186,9 +186,9 @@ class: text-center
 
 ---
 
-<div class="two-stats"><div><span class="stat">470/605</span><br/>Binoculars calls</div><div><span class="stat">594/605</span><br/>Pangram calls</div></div>
+<div class="two-stats"><div><span class="stat">470/605</span><br/>Binoculars · max-F1 calls</div><div><span class="stat">594/605</span><br/>Pangram · AI labels</div></div>
 
-<div class="source-note">Selected generated texts · not wild-site accuracy</div>
+<div class="source-note">Selected generated texts · no matched false-positive rates</div>
 
 <Footer />
 
