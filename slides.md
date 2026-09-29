@@ -471,8 +471,13 @@ Similar sites, shared technology
 
 ---
 
-Backup: builder design
+# Appendix
 
+---
+
+Builder design
+
+<!-- TODO: These are wrong, and should give real prompts -->
 - Wix: company topics, generated names and blog prompts
 - B12: personal-blog topics, separate builder
 - Body swaps: real layouts with generated article bodies
@@ -488,14 +493,6 @@ Training-size sensitivity
 Test-size sensitivity
 
 <img class="paper-plot" src="/paper/fixed_training_vary_test_errors.png" alt="Separate paper test-size study with five fixed classifiers"/>
-
----
-
-Backup: denominator details
-
-- CC: 409,805 retained; 94,908 qualified
-- Bing: 59,046 result sites; 18,169 qualified
-- Top-ten calls: 4,532/10,000 matched queries
 
 ---
 
