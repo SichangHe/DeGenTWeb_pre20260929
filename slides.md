@@ -335,13 +335,14 @@ Common Crawl: page filtering
 
 Common Crawl: qualifying sites
 
-<!-- TODO: This plot is wrong. Should match Bing's except not have search result sites and instead do "Total crawled" -->
+<!-- TODO: This plot is wrong. Should match Bing's except not have search result sites and instead do "Total crawled" in place of "Has saved pages" -->
 <img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/>
 
 ---
 
 Bing: page filtering
 
+<!-- TODO: Instead of "English text", use "English body". Same for other plots -->
 <img class="filter-plot" src="/paper/filter_pages_bing.png" alt="Cumulative Bing page records: 4,723,161 saved crawl records, 2,829,286 with English text, 1,668,750 with at least 200 tokens, 1,479,112 passing Dolma, 1,322,091 passing the repetition filter"/>
 
 ---
@@ -353,6 +354,10 @@ Bing: qualifying sites
 ---
 
 <img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Sites classified as MGT-dominant: 6.0% in Common Crawl, 15.4% in Bing search results"/>
+
+---
+
+TODO: Prevalence curve for CC
 
 ---
 
@@ -374,17 +379,10 @@ Bing: qualifying sites
 
 ---
 
-Across ranked sites
+# Mean search ranks
 
-- MGT-dominant: mean rank 11.7
-- Non-MGT-dominant: mean rank 11.2
-
----
-
-Within the same searches
-
-- 6,474 queries have both classified site groups
-- MGT-dominant results: 2.0 ranks later on average
+- MGT-dominant: 11.7
+- Non-: 11.2
 
 ---
 
