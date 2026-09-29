@@ -305,7 +305,8 @@ Why old sites positive?
 
 - Binoculars worse on newer LLMs
 - Could replace detector
-- E.g. <img class="detector-inline-logo" style="margin-left: -2em" src="/prior/pangram-logo.svg" alt="Pangram"/>
+- E.g. <img class="detector-inline-logo" style="margin-left: -2em"
+    src="/prior/pangram-logo.svg" alt="Pangram"/>
 
 ---
 
@@ -328,22 +329,19 @@ Why old sites positive?
 
 Common Crawl: page filtering
 
-<!-- TODO: This plot is wrong. Should match Bing's -->
-<img class="filter-plot" src="/paper/filter_pages_cc.png" alt="Common Crawl saved filtered pages: 9,107,806 stored, 8,605,649 with valid scores, 7,440,696 on qualifying sites"/>
+<img class="filter-plot" src="/paper/filter_pages_cc.png" alt="Common Crawl raw-cache pages: 44,388,672 crawled; 40,786,889 with English body; 18,062,509 passing Dolma; 9,105,147 additionally passing both token-length and duplication filters"/>
 
 ---
 
 Common Crawl: qualifying sites
 
-<!-- TODO: This plot is wrong. Should match Bing's except not have search result sites and instead do "Total crawled" in place of "Has saved pages" -->
-<img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/>
+<img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl raw-cache sites: 805,268 crawled; 766,984 with English body; 543,686 with Dolma-pass pages; 425,834 with an eligible page; 100,309 with at least 15 eligible pages"/>
 
 ---
 
 Bing: page filtering
 
-<!-- TODO: Instead of "English text", use "English body". Same for other plots -->
-<img class="filter-plot" src="/paper/filter_pages_bing.png" alt="Cumulative Bing page records: 4,723,161 saved crawl records, 2,829,286 with English text, 1,668,750 with at least 200 tokens, 1,479,112 passing Dolma, 1,322,091 passing the repetition filter"/>
+<img class="filter-plot" src="/paper/filter_pages_bing.png" alt="Cumulative Bing page records: 4,723,161 saved crawl records, 2,829,286 with English body, 1,668,750 with at least 200 tokens, 1,479,112 passing Dolma, 1,322,091 passing the repetition filter"/>
 
 ---
 
@@ -387,6 +385,7 @@ Prevalent in Bing search
 
 - MGT-dominant: 11.7
 - Non-: 11.2
+- ⇒ No noticeable penalty!
 
 ---
 
@@ -415,6 +414,7 @@ Prevalent in Bing search
 
 ---
 
+<!-- TODO: Make this big again -->
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
 ---
@@ -441,39 +441,44 @@ Prevalent in Bing search
 
 ---
 
-Bing: financial incentive split
+# Bing: narrow incentive diff
 
-- 76.2% of MGT-dominant sites
-- 71.0% of comparison sites
-
----
-
-Bing sites: ad platforms
-
-- AdSense: 26.6% versus 17.1%
-- Ezoic: 8.5% versus 2.4%
-- Raptive: 4.1% versus 13.2%
+- 76.2% MGT-dominant
+- 71.0% non-
+- ⇒ Search surfaces the incentivized
 
 ---
 
-Audience-building tools
+# Bing sites: ad platforms
 
-- 2.6% of MGT-dominant sites
-- 6.0% of comparison sites
+- AdSense: 26.6% vs 17.1%
+- Ezoic: 8.5% vs 2.4%
+- Raptive: 4.1% vs 13.2%
+- ⇒ MGT- Lower-bar
 
 ---
 
-Shared revenue identifiers
+# Audience-building tools
+
+- 2.6% MGT-dominant
+- 6.0% non-
+- ⇒ MGT- less effort
+
+---
+
+# Shared revenue identifiers
 
 - 215 sites share 75 IDs across domains
-- Largest shared AdSense group: 18 MGT-dominant sites
+- Most-shared AdSense ID: 18 MGT-
+- ⇒ Maybe same owner
 
 ---
 
-Similar sites, shared technology
+# Similar sites, shared technology
 
-- 31 MGT-dominant editorial sites with similar designs
+- 31 MGT- editorial: similar designs
 - Shared Gatsby query fingerprints
+- ⇒ Maybe mass generated
 
 ---
 
@@ -491,25 +496,31 @@ Similar sites, shared technology
 
 Builder prompt → ChatGPT 4o
 
-> Give a one-paragraph summary description of what content "[website domain name]" website has, without mentioning its name.
+> Give a one-paragraph summary description of what content
+> "[website domain name]" website has, without mentioning its name.
 
 ---
 
 Builder prompt → ChatGPT 4o
 
-> Come up with a suiting name for a similar website. Suggest 30 diverse and suiting blog posts for this website.
+> Come up with a suiting name for a similar website.
+> Suggest 30 diverse and suiting blog posts for this website.
 
 ---
 
 Body swap: factual brief
 
-> Summarize the source text as a compact factual brief for a separate writer. List its topic, claims, named entities, dates, numbers, and important relationships.
+> Summarize the source text as a compact factual brief for a separate writer.
+> List its topic, claims, named entities, dates, numbers, and
+> important relationships.
 
 ---
 
 Body swap: new article
 
-> Write a detailed standalone web-page main body from the factual brief below. The source text is unavailable: use only the brief, and do not imply that you saw or are rewriting another text.
+> Write a detailed standalone web-page main body from the factual brief below.
+> The source text is unavailable: use only the brief, and do not imply that
+> you saw or are rewriting another text.
 
 ---
 
