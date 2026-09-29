@@ -76,7 +76,7 @@ class: text-center
 
 <svg class="test-size-panel" viewBox="0 105 1030 800" role="img" aria-label="Test-size study: five fixed classifiers' missed generated body-swap sites versus 25 to 400 test sites, with observed fifth-to-ninety-fifth percentile ranges over 30 samples; separate training cohort from previous slide"><defs><clipPath id="body-plot-clip"><rect x="0" y="105" width="1030" height="800"/></clipPath></defs><image href="/paper/fixed_training_vary_test_errors.png" width="2196" height="1026" clip-path="url(#body-plot-clip)"/><rect x="940" y="105" width="90" height="660" fill="white"/></svg>
 
-<div class="plot-caveat">Different training cohort</div>
+<div class="plot-caveat">Other cohort · fixed Wix/CC models</div>
 
 <Footer />
 
