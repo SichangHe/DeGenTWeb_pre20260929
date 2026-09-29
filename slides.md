@@ -325,33 +325,37 @@ Why old sites positive?
 
 ---
 
-Common Crawl: page filtering
+Common Crawl: saved pages
 
-- 9,107,806 filtered page records
-- 502,157 without usable scores
-- 7,440,696 pages on qualifying sites
+<img class="filter-plot" src="/paper/filter_pages_cc.png" alt="Common Crawl saved filtered pages: 9,107,806 stored, 8,605,649 with valid scores, 7,440,696 on qualifying sites"/>
 
 ---
 
-Common Crawl: site filtering
+Common Crawl: qualifying sites
 
-- 409,805 sites with scored pages
-- 314,897 with fewer than 15 pages
-- 94,908 qualifying sites
+<img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/>
 
 ---
 
-Common Crawl: 6.0% MGT-dominant
+Bing: page filtering
 
-- 5,643/94,908 qualifying sites
+<img class="filter-plot" src="/paper/filter_pages_bing.png" alt="Cumulative Bing page records: 4,723,161 saved crawl records, 2,829,286 with English text, 1,668,750 with at least 200 tokens, 1,479,112 passing Dolma, 1,322,091 passing the repetition filter"/>
 
 ---
 
+Bing: qualifying sites
+
+<img class="filter-plot" src="/paper/filter_sites_bing.png" alt="Bing search-result sites: 59,046 candidates, 46,949 with saved pages, 38,309 with an eligible page, 18,169 with at least 15 eligible pages"/>
+
+---
+
+TODO: Add (5,643/94,908) and 
 <img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Sites classified as MGT-dominant: 6.0% in Common Crawl, 15.4% in Bing search results"/>
 
 ---
 
-Do archived page scores shift?
+<!-- Let's not talk about these -->
+<!-- Do archived page scores shift?
 
 - ≥4 captured pages before and after ChatGPT
 - Post-launch upper quartile below pre-launch lower quartile
@@ -362,33 +366,7 @@ Do archived page scores shift?
 
 - 234 mean after 200 within-site date shuffles
 
----
-
-<!-- TODO: Move these dataset descriptions up above all the results -->
-Bing: page filtering
-
-- 4,723,161 saved page records
-- 1,341,193 unreachable
-- 512,583 non-English
-- 40,099 unknown language
-
----
-
-Bing: page quality
-
-- 994,866 fail Dolma quality filter
-- 512,329 too short or too repetitive
-- 1,322,091 retained
-
----
-
-Bing: site filtering
-
-- 59,046 search-result sites
-- 12,097 without saved page records
-- 18,169 with ≥15 eligible pages
-
----
+--- -->
 
 Bing result sites: 15.4% MGT-dominant
 
