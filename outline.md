@@ -26,6 +26,9 @@
             - lack of ground truth
         - cannot sample the whole web
 - methods
+    - 🤖name: DeGenTWeb
+        - 🤖Detect Generated Text on the Web
+        - 🤖also, Degenerate Web
     - narrow down measured target
         - English prose-heavy sites
             - ignore non-prose
@@ -60,8 +63,8 @@
             - bar chart accuracies among detectors
                 - 🤖pending matched multi-detector scores for the new Wix/CC 2014 baseline
                 <!-- DO NOT use the old 144-site baseline. Use the new baseline -->
-            - overlapping page-score distributions
-                - insight: classify distributions, not individual pages
+            - 🤖pages vary within a site
+                - insight: classify score distributions, not individual pages
         - use 9 score deciles as feature vector
         - train a linear SVM classifier on feature vectors
         - multiple detectors’ scores for the SVM
@@ -74,8 +77,6 @@
             - 🤖B12: median 34/39 detected
         - on more data
             - 🤖body-swap: median 1,142/1,172 detected
-        - compare with page level
-            - 🤖site-level score distributions outperform a single page threshold on the baseline
         - on LLM-polished sites
             - 🤖327/328 not flagged in production-filtered checks
         - 🤖proxy FPR on held-out CC 2014 sites
@@ -102,20 +103,30 @@
         - 🤖409,805 retained subdomains
             - 🤖94,908 qualifying
             - short filter breakdown
+                - 🤖9,107,806 stored page rows; 8,605,649 have usable scores
+                - 🤖other subdomains have fewer than 15 retained pages
         - 🤖6.0% positive rate among qualifying sites
         - 🤖archive-date score shifts
             - 🤖1,486/26,414 sites meet the defined shift criterion
             - 🤖234 expected after 200 within-site shuffles
-            - statistically indicate LLM adoption
+            - 🤖score–date association exceeds within-site shuffling
+                - 🤖dates and scores are associated beyond the shuffle baseline
+                - 🤖selection and genre prevent causal attribution to LLM adoption
     - 🤖Bing how-to search sample
         - estimate prevalence in search results
         - 🤖59,046 result sites
             - 🤖18,169 qualifying
             - short filter breakdown
-        - 🤖15.4% positive calls among qualifying sites
+                - 🤖4,723,161 saved page records; 1,322,091 retained
+                - 🤖1,341,193 lack successful browser fetch; 994,866 fail Dolma
+        - 🤖15.4% positive rate among qualifying sites
         - 🤖45.3% of queries have a matched positive call in the top ten
         - 🤖64.8% have one in the top twenty
         - 🤖unclassified results remain unknown
+        - 🤖matched-query rank comparison
+            - 🤖6,474 queries contain both classified groups
+            - 🤖positive group's mean rank is two positions later
+            - 🤖topic differences prevent inferring Bing ranking policy
     - 🤖characterize selected site groups
         - 🤖compare equal-sized positive and non-positive groups
         - 🤖show category differences without inferring motives
@@ -124,13 +135,16 @@
         - 🤖illustrate with original sampled-site captures
             - 🤖caption with site and snapshot provenance, not verified authorship
     - 🤖draw simple paper-colored bar charts for site-call shares and category proxy
-    <!-- TODO: Feels like we have more good results we have add? -->
+    - 🤖audience-building tools are less common in selected positive sites
+        - 🤖2.6% versus 6.0% in the comparison group
+        - 🤖tool presence does not establish site motives
 - contributions
     - low-FPR site-level MGT detection
     - large & diverse MGT site baseline
     - rising prevalence in CC
     - high prevalence in Bing results
-    <!-- TODO: Deeper findings -->
+    - 🤖temporal score shifts exceed shuffled-date baseline without identifying their cause
+    - 🤖category and engagement differences among selected site groups
 - backup slides
     - baseline construction prompts
     - CC 2014 negatives and training/test-size study details

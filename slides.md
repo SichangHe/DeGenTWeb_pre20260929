@@ -18,24 +18,12 @@ class: text-center
 
 ---
 
-<!-- TODO: Don't do these one-by-one animations. Just show them all at once. -->
-<v-clicks>
-
 - Hallucination?
 - Plagiarism?
-- Misinformation?
-
-</v-clicks>
+- Spam?
+- Scam?
 
 ---
-
-<!-- Which page is generated?
-
-<div class="site-examples"><img src="/prior/example-a-original.jpg" alt="Original embedded website capture A from the prior talk: a health article"/><img src="/prior/example-b-original.jpg" alt="Original embedded website capture B from the prior talk: an article about snow blowers"/></div>
-
-<div class="visual-caption">Original page images from prior talk 3 · authorship unknown</div>
-
---- -->
 
 - How much of the web is MGT
     - Machine-generated text
@@ -43,48 +31,60 @@ class: text-center
 
 ---
 
-- How much of the web is MGT
-    - Machine-generated text
-- Mission impossible
+# Project DeGenTWeb
+
+- **De**tect **Gen**erated **T**ext on the **Web**
+- Or "Degenerate Web"
 
 ---
 
-<v-clicks>
+- How much of the web is MGT
+
+<div class="mission-center">Mission impossible</div>
+
+---
 
 - Cannot sample whole web
 - Text detectors inaccurate
 - Web content noisy
 - No ground truth
 
-</v-clicks>
-
 ---
 
-# Page noise
+Web content noise
 
 <div class="visual-pair"><img src="/prior/noise-example-002.png" alt="Recipe index from prior talk 3"/><img src="/prior/filter-example-002.png" alt="Privacy notice from prior talk 1"/></div>
 
 ---
 
-- Cannot tell ground truth
+Cannot tell ground truth:
 - *SoTA forgeries are almost indistinguishable from “real” media* (Frank, SP2024)
+- …Unless we generated
+
+---
+
+# Addressing challenges
+
+- Impossible
+- → different scope but possible
+
+---
+
+TODO: move this all the way back to when we discuss the in-the-wild experiments. At least mention CC is largest corpus
+<ul class="challenge-list-plain"><li class="active">Cannot sample whole web</li><li>Text detectors inaccurate</li><li>Web content noisy</li><li>No ground truth</li></ul>
 
 ---
 
 Narrow down measured target
 
 - English prose-heavy sites
-    - ignore non-prose
+    - ~~Listings, functionality sites~~
 - Text dominated by MGT
-    - ignore LLM-polished
+    - ~~LLM-polished~~
 
 ---
 
-What we contribute
-
-- Filter noisy pages and aggregate site scores
-- Check generated builders against historical controls
-- Measure two bounded samples of websites
+<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
 
 ---
 
@@ -124,14 +124,10 @@ Filter page noise
 
 Which pages count?
 
-<v-clicks>
-
 - Extracted English prose: ≥200 tokens
 - Dolma text-quality filter
 - Repeated text: ≤50% of extracted bytes
 - ≥15 eligible pages per site
-
-</v-clicks>
 
 ---
 
@@ -140,6 +136,10 @@ No label ≠ negative label
 <img class="method-plot" src="/paper/cc2014_site_attrition.png" alt="Among 10,000 archived CC2014 sites with 15 source pages, 2,917 reached classification; other processing and page filters abstain"/>
 
 <div class="visual-caption">2014 cohort · missing extractions do not prove ineligible source text</div>
+
+---
+
+<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li>Web content noisy</li><li class="active">No ground truth</li></ul>
 
 ---
 
@@ -175,19 +175,15 @@ Historical controls are proxies
 
 ---
 
-One page is not enough
-
-<img class="paper-plot cdf-plot" src="/paper/cdf_baseline_svm_scores.png" alt="Overlapping page-score distributions across selected baseline site types"/>
-
-<div class="visual-caption">Overlapping page scores → aggregate at the site level</div>
+<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li class="active">Text detectors inaccurate</li><li>Web content noisy</li><li>No ground truth</li></ul>
 
 ---
 
-Why aggregate page scores?
+One page cannot describe a site
 
-- Earlier 144-site baseline: 92.8% best page accuracy
-- 100% mean site accuracy on that baseline
-- Not a substitute for held-out builder tests
+<img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
+
+<div class="cdf-caption">Selected 5 CC2014 + 5 Wix + 5 B12 sites · 15 pages per site · not an accuracy estimate</div>
 
 ---
 
@@ -199,10 +195,10 @@ Site-level decision
 
 ---
 
-Detector-comparison chart: awaiting new-baseline scores
+Detector comparison: new-baseline scores pending
 
-- Older 144-site comparison is **not** new-baseline validation
-- No matched multi-detector scores for the new Wix/CC2014 cohort yet
+- Compare detectors on the same Wix/CC2014 sites
+- Result not ready for this talk
 
 ---
 
@@ -297,27 +293,35 @@ The detector matters
 
 ---
 
-Findings in the wild
+Findings in two samples
 
 - Common Crawl archive sample
 - Bing how-to search sample
-- Neither is a whole-web census
 
 ---
 
-Common Crawl: count who could be classified
+Common Crawl: who could be classified?
 
-- 409,805 retained subdomains, 2020–May 2025
+- 9.1m saved page rows → 8.6m scored
+- 409,805 subdomains have scored pages
 - 94,908 have ≥15 qualifying pages
-- The rest receive no site call
 
 ---
 
-Bing: count who could be classified
+Bing: who could be classified?
 
 - 59,046 distinct search-result sites
-- 18,169 have enough eligible pages
-- 15.4% positive calls **among the qualifying sites**
+- 18,169 have ≥15 eligible pages
+- Positive rate: 15.4% of those sites
+
+---
+
+Bing: selected filtering stages
+
+- 4.72m page records
+- 1.34m lacked a successful browser fetch
+- 995k rejected by the Dolma filter
+- 1.32m retained after all filters
 
 ---
 
@@ -333,13 +337,21 @@ Some archived pages shift in score
 
 - 1,486 / 26,414 sites meet the archive-date shift criterion
 - 234 expected under within-site date shuffling
-- Genre and selection limit the interpretation
+- Suggestive of adoption; not a causal test
 
 ---
 
 <img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of page-score shifts over modification dates; this figure does not prove LLM adoption"/>
 
-<div class="visual-caption">Illustrative modification-date curves · shifts do not prove LLM adoption</div>
+<div class="visual-caption">Illustrative page-score shifts · timing alone does not prove adoption</div>
+
+---
+
+Bing ranks within matched queries
+
+- 6,474 queries contain both classified groups
+- Positive sites rank 2 positions later on average
+- Topic differences prevent a ranking-policy claim
 
 ---
 
@@ -355,13 +367,19 @@ What do selected site groups contain?
 
 ---
 
+Engagement tools are less common
+
+- Positive group: 2.6% use audience-building tools
+- Other group: 6.0%
+- Selected sites; tools are proxies for strategy
+
+---
+
 What this work contributes
 
-- Filter noisy pages
-- Aggregate scores across each site
-- Test builders and historical proxies
-- Study two bounded wild-site samples
-- Not whole-web prevalence
+- Site-level detection after page filtering
+- Generated-site baseline and held-out checks
+- Positive rates and site types in two samples
 
 ---
 

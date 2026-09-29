@@ -23,7 +23,7 @@
 }
 
 .slidev-layout li > ul {
-  padding-left: 2rem;
+  padding-left: 4rem;
 }
 
 .slidev-layout h1 {
@@ -80,8 +80,8 @@
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  height: 17.5rem;
-  margin-top: 2rem;
+  height: 23rem;
+  margin-top: 0.5rem;
 }
 
 .slidev-layout .visual-pair img {
@@ -92,9 +92,9 @@
 
 .slidev-layout .wide-figure {
   width: 100%;
-  height: 20rem;
+  height: 22rem;
   object-fit: contain;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .slidev-layout .main-figure,
@@ -124,7 +124,38 @@
 }
 
 .slidev-layout .cdf-plot {
-  height: 21rem;
+  height: 18rem;
+}
+
+.slidev-layout .cdf-caption {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.slidev-layout .mission-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 17rem;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.slidev-layout .challenge-list-plain {
+  list-style: disc;
+  padding-left: 3rem;
+  margin-top: 2rem;
+}
+
+.slidev-layout .challenge-list-plain li {
+  display: list-item;
+  color: #b7bdc5;
+  margin: 1rem 0;
+}
+
+.slidev-layout .challenge-list-plain .active {
+  color: #162337;
 }
 
 .slidev-layout .temporal-plot {
@@ -181,7 +212,7 @@
   display: flex;
   justify-content: space-around;
   gap: 2rem;
-  height: 19rem;
+  height: 21rem;
   margin-top: 0.5rem;
 }
 
