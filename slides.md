@@ -417,17 +417,21 @@ Prevalent in Bing search
 
 ---
 
-Clearer financial incentive
+# Clearer financial incentive
 
 - 78.8% of MGT-dominant
 - 55.8% of non-
 
 ---
 
-Site class differ
+<img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
-- More service and SaaS sites in the MGT-dominant group
-- Fewer personal and organizational sites
+---
+
+# Site class differ
+
+- More service/SaaS in MGT-
+- Fewer personal/organizational
 
 ---
 
