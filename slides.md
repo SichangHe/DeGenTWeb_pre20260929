@@ -332,11 +332,12 @@ Why old sites positive?
 
 --- -->
 
+TODO: We need page-level breakdown and final number of sites instead of this
 <!-- Common Crawl: qualifying sites
 
-<img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/>
+<img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/> -->
 
---- -->
+---
 
 Bing: page filtering
 
@@ -350,7 +351,7 @@ Bing: qualifying sites
 
 ---
 
-<!-- TODO: Add (5,643/94,908) and (xxxx/18,169) after the percentages and make the gap between the bars smaller -->
+<!-- TODO: Make the text for Bing bar inside the bar and white so they don't go out of bound like they do now -->
 <img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Sites classified as MGT-dominant: 6.0% in Common Crawl, 15.4% in Bing search results"/>
 
 ---
@@ -369,24 +370,28 @@ Bing: qualifying sites
 
 --- -->
 
+<!-- TODO: Don't filter queries by whether they have positives, rid title and footer, add x axis label -->
 <img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have an MGT-dominant site in the top ten and 64.8% in the top twenty"/>
 
 ---
 
 Within the same searches
 
+<!-- TODO: WTF is site group? -->
 - 6,474 queries contain both site groups
+<!-- TODO: Give actual ranks -->
 - MGT-dominant sites rank two positions later on average
 
 ---
 
 # Site classification
 
-How are these sites used?
-
-- GPT-OSS-120B categorizes example pages and metadata
+- GPT-OSS-120B
+- example pages and metadata
 - Wappalyzer identifies site components
 - EasyList and affiliate links identify monetization
+
+---
 
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
