@@ -357,7 +357,9 @@ Bing: qualifying sites
 
 ---
 
-TODO: Prevalence vs half-year curve for CC from paper
+CC: newer sites increasingly MGT-
+
+<img class="growth-plot" src="/paper/cc_half_year_mgt_share.png" alt="Paper figure showing a rise in the share of MGT-dominant sites grouped by half-year of the earliest sampled archived page, 2.1% in 2022 H2 and 29.4% in 2025 H1"/>
 
 ---
 
@@ -435,7 +437,11 @@ Prevalent in Bing search
 
 ---
 
-In Bing, the financial-incentive split narrows
+<img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
+
+---
+
+Bing: financial incentive split
 
 - 76.2% of MGT-dominant sites
 - 71.0% of comparison sites
