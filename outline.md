@@ -100,18 +100,17 @@
 - findings in the wild
     - Common Crawl archive sample
         - estimate prevalence on open web
+        - 🤖raw crawl cache: 44,388,672 pages across 805,268 sites
+            - 🤖9,105,147 meet Dolma, token-length, and duplicate filters together
+            - 🤖100,309 sites have at least 15 eligible pages in this cache
+            - 🤖distinct from the later scored cohort
         - 🤖409,805 retained subdomains
             - 🤖94,908 qualifying
             - short filter breakdown
                 - 🤖9,107,806 stored page rows; 8,605,649 have usable scores
                 - 🤖other subdomains have fewer than 15 retained pages
         - 🤖6.0% positive rate among qualifying sites
-        - 🤖archive-date score shifts
-            - 🤖1,486/26,414 sites meet the defined shift criterion
-            - 🤖234 expected after 200 within-site shuffles
-            - 🤖score–date association exceeds within-site shuffling
-                - 🤖dates and scores are associated beyond the shuffle baseline
-                - 🤖selection and genre prevent causal attribution to LLM adoption
+        - 🤖original half-year figure: 2.1% in late 2022 to 29.4% in early 2025
     - 🤖Bing how-to search sample
         - estimate prevalence in search results
         - 🤖59,046 result sites
@@ -127,11 +126,18 @@
             - 🤖6,474 queries contain both classified groups
             - 🤖positive group's mean rank is two positions later
             - 🤖topic differences prevent inferring Bing ranking policy
+        - 🤖across ranked sites: mean rank 11.7 versus 11.2
     - 🤖characterize selected site groups
         - 🤖compare equal-sized positive and non-positive groups
+            - 🤖CC: 3,366 per group; search: 2,393 per group
         - 🤖show category differences without inferring motives
             - 🤖CC clear-incentive proxy: 78.8% versus 55.8%
             - 🤖search proxy separates groups much less
+            - 🤖service and SaaS more represented in CC positive group
+        - 🤖Bing ad platforms: AdSense and Ezoic more; Raptive less
+        - 🤖215 sites share 75 revenue IDs across domains
+            - 🤖one AdSense group links 18 MGT-dominant sites
+        - 🤖31 similar editorial sites share Gatsby query fingerprints
         - 🤖illustrate with original sampled-site captures
             - 🤖caption with site and snapshot provenance, not verified authorship
     - 🤖draw simple paper-colored bar charts for site-call shares and category proxy
@@ -143,7 +149,6 @@
     - large & diverse MGT site baseline
     - rising prevalence in CC
     - high prevalence in Bing results
-    - 🤖temporal score shifts exceed shuffled-date baseline without identifying their cause
     - 🤖category and engagement differences among selected site groups
 - backup slides
     - baseline construction prompts

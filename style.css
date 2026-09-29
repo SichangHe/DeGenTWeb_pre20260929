@@ -110,10 +110,33 @@
 
 .slidev-layout .category-figure {
   display: block;
-  height: 19rem;
+  height: 27rem;
   max-width: 96%;
   object-fit: contain;
   margin: 0 auto;
+}
+
+.slidev-layout .growth-plot {
+  display: block;
+  width: 100%;
+  height: 22rem;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.slidev-layout blockquote {
+  margin: 1rem 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 3rem;
+  line-height: 1.15;
+}
+
+.slidev-layout blockquote p {
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .slidev-layout .paper-plot {
@@ -170,6 +193,14 @@
 .slidev-layout .wild-plot {
   display: block;
   height: 28rem;
+  width: 100%;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.slidev-layout .filter-plot {
+  display: block;
+  height: 23rem;
   width: 100%;
   margin: 0 auto;
   object-fit: contain;
@@ -308,4 +339,45 @@
   height: 29rem;
   object-fit: contain;
   margin: 0 auto;
+}
+
+.slidev-layout .method-pipeline {
+  height: 9rem;
+}
+
+.slidev-layout .todo-plot {
+  height: 23rem;
+}
+
+.slidev-layout .detector-inline-logo {
+  display: inline-block;
+  width: 36rem;
+  height: 8.1rem;
+  vertical-align: middle;
+  object-fit: contain;
+}
+
+.slidev-layout .detector-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.slidev-layout .detector-heading img {
+  width: 6rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.slidev-layout .detector-heading h1 {
+  margin: 0;
+}
+
+.slidev-layout .extraction-quote {
+  font-family: inherit;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  margin: 0.4rem 0;
+  white-space: pre-wrap;
 }

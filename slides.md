@@ -10,6 +10,9 @@ class: text-center
 
 # DeGenTWeb: A First Look at MGT-dominant Websites
 
+<small>Sichang "Steven" He, Calvin Ardi,\
+Ramesh Govindan, Harsha V. Madhyastha</small>
+
 ---
 
 <div class="news-pair"><img src="/prior/news-wired.jpg" alt="WIRED headline: AI Slop Is Flooding Medium"/><img src="/prior/news-rolling-stone.jpg" alt="Rolling Stone headline: Facebook’s AI-Generated Spam Problem Is Worse Than You Realize"/></div>
@@ -414,7 +417,6 @@ Prevalent in Bing search
 
 ---
 
-<!-- TODO: Make this big again -->
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
 ---
@@ -487,6 +489,15 @@ Prevalent in Bing search
 - Rising prevalence in Common Crawl
 - High prevalence in Bing search
 - High incentive, low effort
+
+---
+
+# Post-mortem
+
+- DB choices
+- Stuck in methods details
+- Stuck seeking "interesting insights"
+- Ignored outside doubt on detector
 
 ---
 
