@@ -165,7 +165,19 @@ Cannot tell ground truth:
 
 ---
 
-TODO: Give a quoted example of extracted text from a listing page
+<pre class="extraction-quote">Capital: Andorra la Vella
+Population: 84000
+Area (km2): 468.0
+
+Population: 84000
+Area (km2): 468.0
+Capital: Abu Dhabi
+Population: 4975593
+Area (km2): 82880.0</pre>
+
+<div class="cdf-caption">Trafilatura · <a href="https://www.scrapethissite.com/pages/simple/">Scrape This Site: country listing</a></div>
+
+---
 
 ⇒ Narrow down target
 
@@ -184,9 +196,19 @@ TODO: Give a quoted example of extracted text from a listing page
 
 # Dolma Quality Filter (AI2 2024)
 
-<!-- TODO: More detailed. Just list the actual filter per my appendix -->
-- Remove lists and repeated lines
-- Keep prose
+- 50–100,000 words; median word 3–10 characters
+- Symbols ≤10%; alphabetic words ≥80%
+- ≥2 common English words
+- Punctuation cleaning first; not a rejection rule
+
+---
+
+# Dolma: reject repetitive text
+
+- Frequent 2–4 grams: ≤20%, 18%, 16%
+- Repeated 5–10 grams: ≤15% to 10%
+- Bulleted lines ≤90%; ellipsis lines ≤30%
+- Duplicate lines and their characters ≤30%
 
 ---
 
@@ -194,17 +216,12 @@ TODO: Give a quoted example of extracted text from a listing page
 
 ---
 
-# Binoculars (ICML 2024)
+<div class="detector-heading"><img src="/prior/binoculars-logo.svg" alt="Binoculars project logo"/><h1>Binoculars (ICML 2024)</h1></div>
 
-<!-- TODO: Logo -->
 - Base ⨁ instruct LLM probabilities
 - Low false positive rate
 - ~~LLM-polished~~
 - Can be replaced
-
----
-
-TODO: Page-level detector accuracy comparison plot, or rm this slide if cannot get
 
 ---
 
@@ -233,19 +250,11 @@ TODO: Page-level detector accuracy comparison plot, or rm this slide if cannot g
 
 ---
 
-<!-- TODO: pipeline figure -->
+<img class="paper-plot method-pipeline" src="/paper/degentweb_pipeline.png" alt="Page scoring and site classification in the detection pipeline"/>
 
 - Require ≥15 qualified pages per site
 - 9 deciles of page Binoculars scores
 - Linear support vector machine (SVM)
-
----
-
-Combine detector scores?
-
-TODO: Put in the results or rm slide
-If we cannot get all detectors, put in the ones we have
-Should be table: per-page AUROC, per-site FPR, per-site FNR
 
 ---
 
@@ -259,7 +268,7 @@ Should be table: per-page AUROC, per-site FPR, per-site FNR
 
 In-domain
 
-TODO: bottom half plot of body_swap_transfer_and_size_errors_split_1to1, with y axis label and legend
+<img class="method-plot todo-plot" src="/paper/todo_training_size_errors.png" alt="Training-size sensitivity: positive calls among historical negative-labeled sites and misses among generated body-swap sites"/>
 
 - <0.2% FPR
 - More training → not help
@@ -268,7 +277,7 @@ TODO: bottom half plot of body_swap_transfer_and_size_errors_split_1to1, with y 
 
 Out-of-domain
 
-TODO: top half plot of body_swap_transfer_and_size_errors_split_1to1, with y axis label and legend
+<img class="method-plot todo-plot" src="/paper/todo_out_of_domain_transfer.png" alt="Missed generated Wix and B12 sites over thirty classifier fits"/>
 
 - Generalizes to different data
 
@@ -276,7 +285,7 @@ TODO: top half plot of body_swap_transfer_and_size_errors_split_1to1, with y axi
 
 In-domain
 
-TODO: omitted plot from body_swap_transfer_and_size_errors_split_1to1 that looks like the other two but is with varying test size
+<img class="method-plot todo-plot" src="/paper/todo_test_size_errors.png" alt="Varying test size with a fixed classifier, showing body-swap misses and positive calls among historical negative-labeled sites"/>
 
 - More test data → not worse
 
@@ -300,8 +309,7 @@ Why old sites positive?
 
 - Binoculars worse on newer LLMs
 - Could replace detector
-<!-- TODO: Pangram logo -->
-- E.g. Pangram
+- E.g. <img class="detector-inline-logo" src="/prior/pangram-logo.svg" alt="Pangram"/>
 
 ---
 
@@ -320,13 +328,20 @@ Why old sites positive?
 
 ---
 
-Common Crawl: 6.0% positive
-
-- 5,643/94,908 sites with ≥15 qualifying pages
+<!-- TODO: Give a proper breakdown like we did before: no English text, too short, fail Dolma filter, fail duplication, etc. Could be page level -->
+- Crawled 409,805 Common Crawl
+- 94,908 have ≥15 qualified pages
 
 ---
 
-<img class="wild-plot" src="/paper/qualified_site_positive_calls.png" alt="Positive classifier calls among qualifying Common Crawl subdomains and Bing how-to search-result sites"/>
+Common Crawl: 6.0% MGT-dominant
+
+<!-- Don't use " / ", use "/" -->
+- 5,643/94,908 qualifying subdomains
+
+---
+
+<img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Positive classifier calls: 6.0% of qualifying Common Crawl sites, 15.4% of qualifying Bing search-result sites"/>
 
 ---
 
