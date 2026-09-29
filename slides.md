@@ -110,8 +110,7 @@ Cannot tell ground truth:
 
 # AI Website builders
 
-<!-- TODO: Fill these numbers in -->
-- nn Wix.com + nn B12.io
+- 48 Wix.com + 39 B12.io
 - From descriptions of real sites
 - Home pages + blog posts
 - Lots of clicking
@@ -166,6 +165,8 @@ Cannot tell ground truth:
 
 ---
 
+Problem
+
 <pre class="extraction-quote">Capital: Andorra la Vella
 Population: 84000
 Area (km2): 468.0
@@ -176,7 +177,7 @@ Capital: Abu Dhabi
 Population: 4975593
 Area (km2): 82880.0</pre>
 
-<div class="cdf-caption">Trafilatura · <a href="https://www.scrapethissite.com/pages/simple/">Scrape This Site: country listing</a></div>
+<div class="cdf-caption">https://www.scrapethissite.com/pages/simple/</div>
 
 ---
 
@@ -263,38 +264,32 @@ Area (km2): 82880.0</pre>
 
 - 1,172 body-swap + 10k CC2014
 - In-domain: 1:1 train-test split
-- Out-of-domain: 39 B12 + 50 Wix
+- Out-of-domain: 39 B12 + 48 Wix
 
 ---
 
-In-domain
+In-domain: consistent <0.2% FPR
 
-<img class="method-plot todo-plot" src="/paper/todo_training_size_errors.png" alt="Training-size sensitivity: positive calls among historical negative-labeled sites and misses among generated body-swap sites"/>
-
-- <0.2% FPR
-- More training → not help
+<img class="method-plot todo-plot" src="/paper/todo_training_size_errors.png" alt="False-positive and false-negative rates across training-set sizes"/>
 
 ---
 
-Out-of-domain
+Out-of-domain: generalizes
 
-<img class="method-plot todo-plot" src="/paper/todo_out_of_domain_transfer.png" alt="Missed generated Wix and B12 sites over thirty classifier fits"/>
-
-- Generalizes to different data
+<img class="method-plot todo-plot" src="/paper/todo_out_of_domain_transfer.png" alt="False-negative rates on Wix and B12 sites across thirty fits"/>
 
 ---
 
-In-domain
+In-domain: bigger test → not worse
 
-<img class="method-plot todo-plot" src="/paper/todo_test_size_errors.png" alt="Varying test size with a fixed classifier, showing body-swap misses and positive calls among historical negative-labeled sites"/>
-
-- More test data → not worse
+<img class="method-plot todo-plot" src="/paper/todo_test_size_errors.png" alt="False-negative and false-positive rates across test-set sizes with a fixed classifier"/>
 
 ---
 
 Why old sites positive?
 
-- Repeated templates and formulaic prose
+- Repeated templates
+- Formulaic prose
 - Binoculars memorization
 
 ---
@@ -310,15 +305,16 @@ Why old sites positive?
 
 - Binoculars worse on newer LLMs
 - Could replace detector
-- E.g. <img class="detector-inline-logo" src="/prior/pangram-logo.svg" alt="Pangram"/>
+<!-- TODO: Too small, make 3x large -->
+- E.g. <img class="detector-inline-logo" style="margin-left: -2em" src="/prior/pangram-logo.svg" alt="Pangram"/>
 
 ---
 
 - 605 Claude texts, varying scores
-- Binoculars max-F1: 470 positive
-- Pangram: 594 positive
-    - Also better FPR; both low
-    - Costly: \$50 for above
+    - Binoculars max-F1: 77.7% positive
+    - Pangram: 98.2% positive
+- Also better FPR; both low
+- Costly: \$50 for above
 
 ---
 
@@ -329,60 +325,95 @@ Why old sites positive?
 
 ---
 
-<!-- TODO: Give a proper breakdown like we did before: no English text, too short, fail Dolma filter, fail duplication, etc. Could be page level -->
-- Crawled 409,805 Common Crawl
-- 94,908 have ≥15 qualified pages
+Common Crawl: page filtering
+
+- 9,107,806 filtered page records
+- 502,157 without usable scores
+- 7,440,696 pages on qualifying sites
+
+---
+
+Common Crawl: site filtering
+
+- 409,805 sites with scored pages
+- 314,897 with fewer than 15 pages
+- 94,908 qualifying sites
 
 ---
 
 Common Crawl: 6.0% MGT-dominant
 
-<!-- Don't use " / ", use "/" -->
-- 5,643/94,908 qualifying subdomains
+- 5,643/94,908 qualifying sites
 
 ---
 
-<!-- TODO: Make the axis texts 2x large. Follow font sizes used in the paper plots in general. Make the gap in between small. x axis should say "% Sites classified as MGT-dominant". -->
-<img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Positive classifier calls: 6.0% of qualifying Common Crawl sites, 15.4% of qualifying Bing search-result sites"/>
+<img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Sites classified as MGT-dominant: 6.0% in Common Crawl, 15.4% in Bing search results"/>
 
 ---
 
-<!-- TODO: Seems to be missing many slides regarding growth trend etc. -->
+Do archived page scores shift?
 
-<!-- TODO: What's the shifting criterion? -->
-<!-- I think we drop these entirely -->
-<!-- Some archived sites shift in score
-
-- 1,486/26,414 sites meet the shift criterion
-- 234 expected after shuffling capture dates -->
+- ≥4 captured pages before and after ChatGPT
+- Post-launch upper quartile below pre-launch lower quartile
 
 ---
 
-<!-- <img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of page-score shifts over modification dates"/> -->
+1,486/26,414 sites shift
+
+- 234 mean after 200 within-site date shuffles
 
 ---
 
-<!-- TODO: Also do a proper breakdown here, including how many were unreachable -->
-Bing result sites: 15.4% positive
+<!-- TODO: Move these dataset descriptions up above all the results -->
+Bing: page filtering
+
+- 4,723,161 saved page records
+- 1,341,193 unreachable
+- 512,583 non-English
+- 40,099 unknown language
+
+---
+
+Bing: page quality
+
+- 994,866 fail Dolma quality filter
+- 512,329 too short or too repetitive
+- 1,322,091 retained
+
+---
+
+Bing: site filtering
+
+- 59,046 search-result sites
+- 12,097 without saved page records
+- 18,169 with ≥15 eligible pages
+
+---
+
+Bing result sites: 15.4% MGT-dominant
 
 - 18,169 sites with ≥15 eligible pages
 
 ---
 
-<img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have a matched positive call in the top ten and 64.8% in the top twenty"/>
+<img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have an MGT-dominant site in the top ten and 64.8% in the top twenty"/>
 
 ---
 
 Within the same searches
 
 - 6,474 queries contain both site groups
-- Positive sites rank two positions later on average
+- MGT-dominant sites rank two positions later on average
 
 ---
 
 # Site classification
 
-TODO: a slide on how we do it with GPT-OSS-120B
+How are these sites used?
+
+- GPT-OSS-120B categorizes example pages and metadata
+- Wappalyzer identifies site components
+- EasyList and affiliate links identify monetization
 
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
@@ -398,7 +429,7 @@ In selected CC groups: financial incentive
 Takeaways
 
 - Detect across pages, not from a single page
-- Quantify positives in two web samples
+- Classify sites in two web samples
 - Compare what the flagged sites do
 
 ---
