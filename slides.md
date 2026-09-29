@@ -349,7 +349,6 @@ Bing: qualifying sites
 
 ---
 
-<!-- TODO: Actually, keep the sizes outside the bars and extend the x axis to 100for better scale. Make x axis visible -->
 <img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Sites classified as MGT-dominant: 6.0% in Common Crawl, 15.4% in Bing search results"/>
 
 ---
@@ -368,31 +367,48 @@ Bing: qualifying sites
 
 --- -->
 
-<!-- TODO: Don't filter queries by whether they have positives, rid title and footer, add x axis label -->
-<!-- TODO: Make x axis visible -->
 <img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have an MGT-dominant site in the top ten and 64.8% in the top twenty"/>
+
+---
+
+Across ranked sites
+
+- MGT-dominant: mean rank 11.7
+- Non-MGT-dominant: mean rank 11.2
 
 ---
 
 Within the same searches
 
-<!-- TODO: WTF is site group? -->
-- 6,474 queries contain both site groups
-<!-- TODO: Give actual ranks -->
-- MGT-dominant sites rank two positions later on average
+- 6,474 queries have both classified site groups
+- MGT-dominant results: 2.0 ranks later on average
 
 ---
 
 # Site classification
 
 - GPT-OSS-120B
-- N example pages and metadata
-<!-- TODO: Below belongs to other slides -->
-<!-- - Wappalyzer identifies site components
-- EasyList and affiliate links identify monetization -->
+- Up to 5 sampled pages per site
+- Page text and metadata
 
 ---
 
+Site signals
+
+- Wappalyzer: technologies
+- EasyList: ads
+- Link patterns: affiliates
+
+---
+
+Compare equally sized site groups
+
+- CC: 3,366 MGT-dominant; 3,366 comparison
+- Bing: 2,393 MGT-dominant; 2,393 comparison
+
+---
+
+<!-- TODO: This plot should say "MGT-" instead of "LLM-". I think it has been fixed and you just need to find it -->
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
 ---
@@ -404,11 +420,54 @@ In selected CC groups: financial incentive
 
 ---
 
-Takeaways
+Site types differ in Common Crawl
 
-- Detect across pages, not from a single page
-- Classify sites in two web samples
-- Compare what the flagged sites do
+- More service and SaaS sites in the MGT-dominant group
+- Fewer personal and organizational sites
+
+---
+
+In Bing, the financial-incentive split narrows
+
+- 76.2% of MGT-dominant sites
+- 71.0% of comparison sites
+
+---
+
+Bing sites: ad platforms
+
+- AdSense: 26.6% versus 17.1%
+- Ezoic: 8.5% versus 2.4%
+- Raptive: 4.1% versus 13.2%
+
+---
+
+Audience-building tools
+
+- 2.6% of MGT-dominant sites
+- 6.0% of comparison sites
+
+---
+
+Shared revenue identifiers
+
+- 215 sites share 75 IDs across domains
+- Largest shared AdSense group: 18 MGT-dominant sites
+
+---
+
+Similar sites, shared technology
+
+- 31 MGT-dominant editorial sites with similar designs
+- Shared Gatsby query fingerprints
+
+---
+
+- Low-FPR MGT detection at *site-level*
+- Large, diverse MGT site baseline
+- Rising prevalence in Common Crawl
+- High prevalence in Bing search
+- High incentive, low effort
 
 ---
 
