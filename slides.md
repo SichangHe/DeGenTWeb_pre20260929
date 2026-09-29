@@ -341,21 +341,27 @@ Common Crawl: 6.0% MGT-dominant
 
 ---
 
+<!-- TODO: Make the axis texts 2x large. Follow font sizes used in the paper plots in general. Make the gap in between small. x axis should say "% Sites classified as MGT-dominant". -->
 <img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Positive classifier calls: 6.0% of qualifying Common Crawl sites, 15.4% of qualifying Bing search-result sites"/>
 
 ---
 
-Some archived sites shift in score
+<!-- TODO: Seems to be missing many slides regarding growth trend etc. -->
+
+<!-- TODO: What's the shifting criterion? -->
+<!-- I think we drop these entirely -->
+<!-- Some archived sites shift in score
 
 - 1,486/26,414 sites meet the shift criterion
-- 234 expected after shuffling capture dates
+- 234 expected after shuffling capture dates -->
 
 ---
 
-<img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of page-score shifts over modification dates"/>
+<!-- <img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of page-score shifts over modification dates"/> -->
 
 ---
 
+<!-- TODO: Also do a proper breakdown here, including how many were unreachable -->
 Bing result sites: 15.4% positive
 
 - 18,169 sites with ≥15 eligible pages
@@ -373,7 +379,9 @@ Within the same searches
 
 ---
 
-What kinds of sites get flagged?
+# Site classification
+
+TODO: a slide on how we do it with GPT-OSS-120B
 
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
