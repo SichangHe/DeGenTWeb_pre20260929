@@ -77,7 +77,6 @@ We can still measure something useful
 
 ---
 
-<!-- TODO: First present insight and then talk about the target narrowing basically we need to say we can do this and we can do that and then we say this is how we do it -->
 Narrow down measured target
 
 - English prose-heavy sites
@@ -87,7 +86,6 @@ Narrow down measured target
 
 ---
 
-<!-- TODO: move this all the way back to when we discuss the in-the-wild experiments. At least mention CC is largest open corpus. -->
 <ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
 
 ---
