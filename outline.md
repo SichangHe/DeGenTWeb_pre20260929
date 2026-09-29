@@ -5,54 +5,77 @@
 
 - 30min talk
 - mostly familiar audience, some new but familiar with networking
+- 🤖rough pacing
+  - 🤖5 min motivation
+  - 🤖20 min methodology
+  - 🤖5 min findings and takeaways
 
 ## Outline
 
-- central questions
-  - how much of the web is MGT
-  - what are these sites doing
-- 🤖why ask
-  - 🤖three news screenshots introduce the concern
-- challenges
-  - cannot reliably detect MGT
-    - 🤖text detector inaccuracies
-    - 🤖web content noise
-    - 🤖lack of ground truth
-  - cannot sample the whole web
-    - 🤖neither crawl nor search results represent all sites
-- 🤖what counts as a site call
-  - 🤖article-heavy sites with extractable English prose
-  - 🤖sample pages and remove boilerplate, repeats, and short text
-  - 🤖require at least 15 eligible pages; leave other sites unclassified
-  - 🤖summarize Binoculars page scores with a site-level linear SVM
-- 🤖how we check the classifier
-  - 🤖Wix, B12, and generated body-swap sites test detection
-  - 🤖2014 Common Crawl sites are proxy negatives, not verified human text
-  - 🤖82% held-out Wix; 87% median B12; 97% median body-swap detected
-  - 🤖40 positive calls in 40,000 held-out 2014-site decisions
-  - 🤖training-size and transfer plot shows model sensitivity
-  - 🤖separate test-size plot uses different fixed classifiers
-  - 🤖site score distributions improve on a page threshold
-- 🤖what we observe in the wild
-  - 🤖Common Crawl: 409,805 retained; 94,908 qualifying; 6.0% positive calls
-  - 🤖Bing how-to: 59,046 results sites; 18,169 qualifying; 15.4% calls
-  - 🤖45.3% of queries have a positive call in the matched top ten
-  - 🤖site scores sometimes shift across archive dates
-    - 🤖date shifts do not establish why a site changed
-- 🤖what kinds of sites
-  - 🤖compare selected, equal-sized positive and non-positive groups
-  - 🤖service, SaaS, affiliate, editorial, personal, and other categories
-  - 🤖more service and SaaS labels among CC positive calls
-  - 🤖little Bing separation on the financial-incentive proxy
-  - 🤖category and monetization proxies do not establish motives
-- 🤖where the measurement stops
-  - 🤖605 selected Sonnet 4/4.6 generated texts test detector shelf life
-  - 🤖Binoculars max-F1 calls 470 positive; Pangram labels 594 as AI
-    - 🤖selected positives cannot compare matched false-positive rates
-  - 🤖new validation does not calibrate earlier wild-site calls
-  - 🤖classifier calls are not whole-web prevalence or verified truth
+- 🤖motivation
+  - central questions
+    - how much of the web is MGT
+    - what are these sites doing
+  - why ask
+    - three news screenshots introduce the concern
+    - 🤖ask whether two real page examples differ in authorship
+      - 🤖candidate visuals: original site captures or traceable GitHub issues
+  - challenges
+    - cannot reliably detect MGT
+      - text detector inaccuracies
+      - web content noise
+      - lack of ground truth
+    - cannot sample the whole web
+      - 🤖two workable samples cannot represent every website
+- 🤖methodology — main focus
+  - 🤖define the measured target
+    - 🤖sites dominated by machine-generated English prose
+    - 🤖a subdomain is one site
+    - 🤖unclassifiable sites receive no label
+  - 🤖address web content noise
+    - 🤖show an original site page with navigation and boilerplate
+    - 🤖sample pages and extract main text
+    - 🤖require English text with at least 200 tokens
+    - 🤖remove duplicates and poor-quality text
+    - 🤖require at least 15 eligible pages per site
+  - 🤖address lack of ground truth
+    - 🤖generate Wix and B12 baseline sites from real site topics
+    - 🤖use 2014 Common Crawl sites as proxy negatives
+      - 🤖their authorship is not verified
+    - 🤖show paired site examples or a traceable issue screenshot
+  - 🤖address text detector inaccuracies
+    - 🤖score each retained page with Binoculars
+    - 🤖show overlapping page-score distributions
+    - 🤖summarize nine site-level score percentiles
+    - 🤖train a linear classifier on site-level summaries
+  - 🤖test whether the approach generalizes
+    - 🤖held-out Wix, B12, and generated body-swap sites
+    - 🤖check positive calls on held-out 2014 sites
+    - 🤖show transfer and training-size sensitivity
+    - 🤖show separate test-size study without conflating its cohort
+  - 🤖explain what a site call cannot prove
+    - 🤖page filtering excludes sites without enough prose
+    - 🤖held-out tests do not calibrate historical wild-site calls
+    - 🤖selected Sonnet 4/4.6 texts reveal frontier-detector limits
+- 🤖findings in the wild — shorter
+  - 🤖Common Crawl archive sample
+    - 🤖409,805 retained subdomains
+      - 🤖94,908 qualifying
+    - 🤖6.0% positive calls among qualifying sites
+  - 🤖Bing how-to search sample
+    - 🤖59,046 result sites
+      - 🤖18,169 qualifying
+    - 🤖15.4% positive calls among qualifying sites
+    - 🤖45.3% of queries have a matched positive call in the top ten
+  - 🤖characterize selected site groups
+    - 🤖compare equal-sized positive and non-positive groups
+    - 🤖show category differences without inferring motives
+    - 🤖show archive-date score shifts without asserting their cause
+  - 🤖conclude with the measurement boundary
+    - 🤖classifier calls are not verified authorship or whole-web prevalence
 - 🤖backup slides to prepare
   - 🤖filter attrition and why sites remain unclassified
-  - 🤖held-out builder and 2014 proxy-negative details
-  - 🤖search result matching and query-rank denominators
-  - 🤖category-group sizes and missing signal coverage
+  - 🤖baseline construction and held-out builder transfer
+  - 🤖2014 proxy negatives and training/test-size study details
+  - 🤖search-rank denominators and missing results
+  - 🤖selected categories and newer-detector comparison
