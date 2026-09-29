@@ -102,6 +102,21 @@
   object-fit: contain;
 }
 
+.slidev-layout .temporal-plot {
+  display: block;
+  height: 20rem;
+  max-width: 96%;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.slidev-layout .challenge-list {
+  font-size: 3rem;
+  line-height: 1.4;
+  margin: 2rem auto;
+  text-align: center;
+}
+
 .slidev-layout .plot-caption {
   font-size: 3rem;
   line-height: 1.12;

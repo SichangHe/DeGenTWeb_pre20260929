@@ -22,11 +22,21 @@ class: text-center
 
 ---
 
-# What can we measure?
+# What is MGT?
 
 <div class="mgt-definition">MGT = machine-generated text</div>
 
-<div class="source-note">Qualifying sites ≠ the whole web</div>
+<div class="source-note">Includes templates, not just LLMs</div>
+
+<Footer />
+
+---
+
+# Three obstacles
+
+<div class="challenge-list">Text detectors err<br/>Web pages are noisy<br/>Ground truth is scarce</div>
+
+<div class="source-note">Neither crawl nor search samples the whole web</div>
 
 <Footer />
 
@@ -48,9 +58,19 @@ class: text-center
 
 ---
 
+# Which pages count?
+
+<div class="challenge-list">English prose · ≥200 tokens<br/>No repeated boilerplate<br/>≥15 eligible pages per site</div>
+
+<div class="source-note">Other sites remain unclassified</div>
+
+<Footer />
+
+---
+
 # Site-level decision
 
-<div class="hero">15 usable pages → one call</div>
+<div class="hero">Binoculars page scores<br/>→ score distribution<br/>→ linear SVM site call</div>
 
 <Footer />
 
@@ -61,6 +81,14 @@ class: text-center
 <div class="two-stats"><div><span class="stat">82%</span><br/>Wix held out · 41/50</div><div><span class="stat">87%</span><br/>B12 median · 34/39</div></div>
 
 <div class="source-note">DRAFT · old wild calls remain uncalibrated</div>
+
+<Footer />
+
+---
+
+<div class="two-stats"><div><span class="stat">97.4%</span><br/>body-swap median detected</div><div><span class="stat">40/40k</span><br/>CC2014 proxy positive calls</div></div>
+
+<div class="source-note">2014 labels do not verify human authorship</div>
 
 <Footer />
 
@@ -98,12 +126,6 @@ class: text-center
 
 ---
 
-<img class="paper-plot" src="/paper/pangram_vs_binoculars.png" alt="Paper figure: Pangram AI percentage versus Binoculars score for 605 generated replacement texts"/>
-
-<Footer />
-
----
-
 # CC denominator
 
 <div class="denominator">409,805 retained<br/>↓<br/>94,908 qualifying<br/>↓<br/>6.0% positive calls ≠ whole web</div>
@@ -122,7 +144,17 @@ class: text-center
 
 ---
 
-<img class="paper-plot" src="/paper/transition_3site.png" alt="Paper figure: examples of temporal changes in detector scores on sampled sites"/>
+<div class="two-stats"><div><span class="stat">45.3%</span><br/>queries · top 10</div><div><span class="stat">64.8%</span><br/>queries · top 20</div></div>
+
+<div class="source-note">≥1 matched positive call · unclassified results unknown</div>
+
+<Footer />
+
+---
+
+<img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of changes in detector scores over page dates, without attributing cause"/>
+
+<div class="source-note">Score shifts ≠ proof of LLM adoption</div>
 
 <Footer />
 
@@ -138,8 +170,40 @@ class: text-center
 
 ---
 
+# Selected group differences
+
+<div class="challenge-list">CC: more services and SaaS among positive calls<br/>Bing: little separation on the incentive proxy</div>
+
+<div class="source-note">Equal-sized groups · not a web-wide mix</div>
+
+<Footer />
+
+---
+
+<img class="paper-plot" src="/paper/pangram_vs_binoculars.png" alt="Paper figure: Pangram AI percentage versus Binoculars score for 605 selected generated replacement texts"/>
+
+<Footer />
+
+---
+
+<div class="two-stats"><div><span class="stat">470/605</span><br/>Binoculars calls</div><div><span class="stat">594/605</span><br/>Pangram calls</div></div>
+
+<div class="source-note">Selected generated texts · not wild-site accuracy</div>
+
+<Footer />
+
+---
+
 # Takeaway
 
-<div class="hero">Observed qualifying sites only</div>
+<div class="hero">Calls among qualifying sites<br/>≠ prevalence across the web</div>
+
+<Footer />
+
+---
+
+# Backup slides to prepare
+
+<div class="challenge-list">Filter attrition<br/>Held-out builder & CC2014 checks<br/>Search-rank and category denominators</div>
 
 <Footer />
