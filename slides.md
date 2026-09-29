@@ -59,7 +59,9 @@ Cannot sample whole web
 
 Text detectors inaccurate
 
-- TODO: cite some papers
+- On RAID, Binoculars catches 70% at 1% false positives
+
+<div class="cdf-caption">Dugan et al., ACL 2024</div>
 
 ---
 
@@ -110,7 +112,7 @@ Cannot tell ground truth:
 
 # AI Website builders
 
-- xx Wix.com + xx B12.io
+- Wix.com + B12.io
 - From descriptions of real sites
 - Home pages + blog posts
 - Lots of clicking
@@ -121,7 +123,7 @@ Cannot tell ground truth:
 
 - Retain layout/boilerplate
 - Summarize → expand → swap
-- x,xxx sites
+- 1,172 evaluated sites
 
 ---
 
@@ -161,8 +163,6 @@ Cannot tell ground truth:
 
 ---
 
-TODO: Give a quoted example of extracted text from a listing page
-
 ⇒ Narrow down target
 
 - English prose-heavy pages
@@ -184,9 +184,8 @@ TODO: Give a quoted example of extracted text from a listing page
 
 # Dolma Quality Filter (AI2 2024)
 
-<!-- TODO: Rework these. Very bad -->
-- Reject excessive repetition and list-like text
-- Reject low linguistic quality
+- Remove lists and repeated lines
+- Keep prose
 
 ---
 
@@ -196,38 +195,25 @@ TODO: Give a quoted example of extracted text from a listing page
 
 # Binoculars (ICML 2024)
 
-TODO: Explain this roughly. The pipeline. Logo. Claim low FPR
-
-- ~~LLM-polished~~
-- Can be replaced
-
----
-
-TODO: Page-level detector accuracy comparison plot, or rm this slide if cannot get
+- Compare how two language models score the same text
+- One score per page
 
 ---
 
 <img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
 
-<div class="cdf-caption">Select baseline sites.</div>
+<div class="cdf-caption">Five sites per group</div>
 
 ---
 
 <img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
 
-<div class="cdf-caption">Select baseline sites.</div>
+<div class="cdf-caption">Five sites per group</div>
 
-- Per-page scores fluctuate
-- Site-wide distributions consistent
-
----
-
-- Site-wide distributions consistent
-- ⇒ Detect MGT-dominant sites
+- Page scores overlap between groups
+- Compare distributions across pages
 
 ---
-
-<!-- TODO: pipeline figure -->
 
 - Require ≥15 qualified pages per site
 - 9 deciles of page Binoculars scores
@@ -235,184 +221,104 @@ TODO: Page-level detector accuracy comparison plot, or rm this slide if cannot g
 
 ---
 
-Combine detector scores?
+How we test the classifier
 
-TODO: Put in the results or rm slide
-
----
-
-<!-- TODO: I cannot understand these 3 slides. Present these in a sane manner: what are the train/test splits? What are the FPR/FNR? I don't think we need additional plots/numbers other than the box plot -->
-Held-out generated sites
-
-<div class="bar-study"><div><strong>Wix</strong><span class="bar-track"><i style="width:82%"></i></span><b>41/50 · 82%</b></div><div><strong>B12</strong><span class="bar-track"><i class="second" style="width:87.2%"></i></span><b>34/39 · 87% median</b></div></div>
-
-- Wix: same builder
-- B12: new builder and site type
+- Train on 40 Wix + 2,000 CC2014 sites per fold
+- Test 10 unseen Wix sites per fold
 
 ---
 
-<!-- TODO: I cannot understand this slide -->
-Body swaps test new layouts
+Detection on new sites
 
-- 1,142 / 1,172 detected, median over fixed runs
-- 97.4% for sampled layouts and generation models
+<img class="paper-plot" src="/paper/production_transfer_detection_rates.png" alt="Paper box plot of B12 and body-swap detection rates across five classifier fits"/>
 
----
-
-- 40 positives / 40,000 held-out CC2014 decisions
-- 0.1% false positive rate
-<!-- - CC2014 labels do not verify human authorship. Shut up about this!! We already assume they are not MGT -->
+- Train on all Wix; test B12 and body swaps
 
 ---
 
-<!-- CC2014 calls across repeated classifier fits
+False positives on 2014 sites
 
-- htmlbible.com: positive in 1 / 3 fits
-- jeeps-for-sale.net: positive in 4 / 5 fits
-- lawnmowersforsale.net: positive in 4 / 5 fits
-
-<div class="visual-caption">Historical labels are proxies; authorship unverified</div>
-
---- -->
-
-Why false positives?
-
-- Repeated templates & formulaic prose
-- Falcon-7B memorized similar text
+- 40 / 40,000 held-out decisions
+- 0.1% false-positive rate
 
 ---
 
-~~Polished text~~
+Why do old sites get flagged?
 
-- Polish CC sites
-- 327/328 detected as negative
-
----
-
-<!-- TODO: Split this plot into two, show the bottom one first, then the top one. -->
-<img class="paper-plot" src="/paper/body_swap_transfer_and_size_errors_split_1to1.png" alt="Paper figure: site-classifier transfer and training-size sensitivity across Wix, B12, body-swap, and CC2014 sites"/>
-
-<div class="visual-caption">Out-of-domain and in-domain false positive/negative rates.</div>
+- Repeated templates and formulaic prose
+- Falcon-7B may have learned similar text
 
 ---
 
-TODO: Plot of ID FPR/FNR with varying test sizes
+Polishing alone is not our target
+
+- 327 / 328 polished sites remain negative
 
 ---
 
-<!-- TODO: This is also presented extremely poorly. Follow the flow in the paper -->
-Newer models expose detector limits
-
-<img class="paper-plot" src="/paper/pangram_vs_binoculars.png" alt="Paper figure: Pangram AI percentage versus Binoculars score for 605 selected generated replacement texts"/>
-
----
-
-The detector matters
-
-- Binoculars max-F1: 470 / 605 selected generated texts flagged
-- Pangram: 594 / 605 returned AI labels
-- Selected positives cannot compare matched false-positive rates
-
----
-
-Findings in two samples
+Findings in the wild
 
 - Common Crawl archive sample
 - Bing how-to search sample
 
 ---
 
-<ul class="challenge-list-plain"><li class="active">Cannot sample whole web</li><li>Text detectors inaccurate</li><li>Web content noisy</li><li>No ground truth</li></ul>
+Common Crawl: 6.0% positive
+
+- 5,643 / 94,908 sites with ≥15 qualifying pages
 
 ---
 
-Common Crawl is the largest publicly available web sample
-
-- Still not a census of the open web
-- Analyze only subdomains with ≥15 eligible pages
+<img class="wild-plot" src="/paper/qualified_site_positive_calls.png" alt="Positive classifier calls among qualifying Common Crawl subdomains and Bing how-to search-result sites"/>
 
 ---
 
-Common Crawl: who could be classified?
+Some archived sites shift in score
 
-- 9.1m saved page rows → 8.6m scored
-- 409,805 subdomains have scored pages
-- 94,908 have ≥15 qualifying pages
-
----
-
-Bing: who could be classified?
-
-- 59,046 distinct search-result sites
-- 18,169 have ≥15 eligible pages
-- Positive rate: 15.4% of those sites
+- 1,486 / 26,414 sites meet the shift criterion
+- 234 expected after shuffling capture dates
 
 ---
 
-Bing: selected filtering stages
-
-- 4.72m page records
-- 1.34m lacked a successful browser fetch
-- 995k rejected by the Dolma filter
-- 1.32m retained after all filters
+<img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of page-score shifts over modification dates"/>
 
 ---
 
-<img class="wild-plot" src="/paper/qualified_site_positive_calls.png" alt="Paper-style comparison: positive classifier calls among 94,908 qualifying Common Crawl subdomains and 18,169 qualifying Bing result sites; separate sampling frames, not web-wide prevalence"/>
+Bing result sites: 15.4% positive
+
+- 18,169 sites with ≥15 eligible pages
 
 ---
 
-<img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Paper-style comparison: of 10,000 Bing how-to queries, 45.3 percent have a matched positive call in the top ten; 64.8 percent in the top twenty; unclassified results remain unknown"/>
+<img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have a matched positive call in the top ten and 64.8% in the top twenty"/>
 
 ---
 
-Some archived pages shift in score
+Within the same searches
 
-- 1,486 / 26,414 sites meet the archive-date shift criterion
-- 234 expected under within-site date shuffling
-- Suggestive of adoption; not a causal test
-
----
-
-<img class="temporal-plot" src="/paper/transition_3site.png" alt="Paper examples of page-score shifts over modification dates; this figure does not prove LLM adoption"/>
-
-<div class="visual-caption">Illustrative page-score shifts · timing alone does not prove adoption</div>
+- 6,474 queries contain both site groups
+- Positive sites rank two positions later on average
 
 ---
 
-Bing ranks within matched queries
-
-- 6,474 queries contain both classified groups
-- Positive sites rank 2 positions later on average
-- Topic differences prevent a ranking-policy claim
-
----
-
-What do selected site groups contain?
+What kinds of sites get flagged?
 
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
-<div class="visual-caption">Equal-sized comparison groups · not the web's category mix</div>
+---
+
+In selected CC groups: financial incentive
+
+- 78.8% of flagged sites
+- 55.8% of the comparison group
 
 ---
 
-<img class="wild-plot" src="/paper/selected_cc_financial_incentive.png" alt="Paper-style comparison: clear-financial-incentive category proxy in selected equal-size positive and other-call Common Crawl site groups, not actual site motivations"/>
+Takeaways
 
----
-
-Engagement tools are less common
-
-- Positive group: 2.6% use audience-building tools
-- Other group: 6.0%
-- Selected sites; tools are proxies for strategy
-
----
-
-What this work contributes
-
-- Site-level detection after page filtering
-- Generated-site baseline and held-out checks
-- Positive rates and site types in two samples
+- Detect across pages, not from a single page
+- Quantify positives in two web samples
+- Compare what the flagged sites do
 
 ---
 
@@ -421,6 +327,18 @@ Backup: builder design
 - Wix: company topics, generated names and blog prompts
 - B12: personal-blog topics, separate builder
 - Body swaps: real layouts with generated article bodies
+
+---
+
+Training-size sensitivity
+
+<img class="paper-plot" src="/paper/fixed_test_vary_training_errors.png" alt="Paper training-size study with a fixed balanced test set"/>
+
+---
+
+Test-size sensitivity
+
+<img class="paper-plot" src="/paper/fixed_training_vary_test_errors.png" alt="Separate paper test-size study with five fixed classifiers"/>
 
 ---
 
@@ -433,11 +351,3 @@ Backup: denominator details
 ---
 
 <img class="method-plot" src="/paper/cc2014_site_attrition.png" alt="Among 10,000 archived 2014 sites, 2,917 reach classification after extraction and page filters"/>
-
----
-
-Missing extractions ≠ negative labels
-
-- 10,000 archived sites; 15 source pages each
-- 2,776 sites lack 15 processed extractions
-- Processing gap, not proven ineligibility
