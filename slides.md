@@ -59,9 +59,7 @@ Cannot sample whole web
 
 Text detectors inaccurate
 
-- On RAID, Binoculars catches 70% at 1% false positives
-
-<div class="cdf-caption">Dugan et al., ACL 2024</div>
+- On RAID (ACL 2024), Binoculars catches 70% at 1% false positives
 
 ---
 
@@ -90,8 +88,8 @@ Cannot tell ground truth:
 
 # Common Crawl (CC)
 
-- Largest public archive of the open web
-- Collected regularly since 2008
+- Largest public archive of open web
+- Regularly since 2008
 
 ---
 
@@ -112,7 +110,7 @@ Cannot tell ground truth:
 
 # AI Website builders
 
-- Wix.com + B12.io
+- nn Wix.com + nn B12.io
 - From descriptions of real sites
 - Home pages + blog posts
 - Lots of clicking
@@ -123,13 +121,17 @@ Cannot tell ground truth:
 
 - Retain layout/boilerplate
 - Summarize → expand → swap
-- 1,172 evaluated sites
+- 1,172 sites
 
 ---
 
 # Diverse body-swap sites
 
 - 8 LLMs: GPT-3.5/4/OSS-120B, Haiku 4.5, Sonnet 4/4.6, Mixtral, Llama
+
+---
+
+<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li class="active">Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
 
 ---
 
@@ -163,14 +165,12 @@ Cannot tell ground truth:
 
 ---
 
+TODO: Give a quoted example of extracted text from a listing page
+
 ⇒ Narrow down target
 
 - English prose-heavy pages
     - ~~Listings, functionality pages~~
-
----
-
-<ul class="challenge-list-plain"><li>Cannot sample whole web</li><li>Text detectors inaccurate</li><li class="active">Web content noisy</li><li>No ground truth</li></ul>
 
 ---
 
@@ -184,6 +184,7 @@ Cannot tell ground truth:
 
 # Dolma Quality Filter (AI2 2024)
 
+<!-- TODO: More detailed. Just list the actual filter per my appendix -->
 - Remove lists and repeated lines
 - Keep prose
 
@@ -195,25 +196,44 @@ Cannot tell ground truth:
 
 # Binoculars (ICML 2024)
 
-- Compare how two language models score the same text
-- One score per page
+<!-- TODO: Logo -->
+- Base ⨁ instruct LLM probabilities
+- Low false positive rate
+- ~~LLM-polished~~
+- Can be replaced
 
 ---
+
+TODO: Page-level detector accuracy comparison plot, or rm this slide if cannot get
+
+---
+
+- <br>
+- <br>
 
 <img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
 
-<div class="cdf-caption">Five sites per group</div>
+<div class="cdf-caption">Select baseline sites.</div>
 
 ---
+
+- Page scores overlap
+- Site-wide distributions consistent
 
 <img class="paper-plot cdf-plot" src="/paper/cdf_new_baseline_binoculars.png" alt="Binoculars page-score distributions from five selected CC2014, five Wix, and five B12 sites; fifteen scored pages per site, not accuracy or a population estimate"/>
 
-<div class="cdf-caption">Five sites per group</div>
-
-- Page scores overlap between groups
-- Compare distributions across pages
+<div class="cdf-caption">Select baseline sites.</div>
 
 ---
+
+- Page scores overlap
+- Site-wide distributions consistent
+
+⇒ Detect MGT-dominant sites
+
+---
+
+<!-- TODO: pipeline figure -->
 
 - Require ≥15 qualified pages per site
 - 9 deciles of page Binoculars scores
@@ -221,51 +241,88 @@ Cannot tell ground truth:
 
 ---
 
-How we test the classifier
+Combine detector scores?
 
-- Train on 40 Wix + 2,000 CC2014 sites per fold
-- Test 10 unseen Wix sites per fold
-
----
-
-Detection on new sites
-
-<img class="paper-plot" src="/paper/production_transfer_detection_rates.png" alt="Paper box plot of B12 and body-swap detection rates across five classifier fits"/>
-
-- Train on all Wix; test B12 and body swaps
+TODO: Put in the results or rm slide
+If we cannot get all detectors, put in the ones we have
+Should be table: per-page AUROC, per-site FPR, per-site FNR
 
 ---
 
-False positives on 2014 sites
+# Methods Eval
 
-- 40 / 40,000 held-out decisions
-- 0.1% false-positive rate
+- 1,172 body-swap + 10k CC2014
+- In-domain: 1:1 train-test split
+- Out-of-domain: 39 B12 + 50 Wix
 
 ---
 
-Why do old sites get flagged?
+In-domain
+
+TODO: bottom half plot of body_swap_transfer_and_size_errors_split_1to1, with y axis label and legend
+
+- <0.2% FPR
+- More training → not help
+
+---
+
+Out-of-domain
+
+TODO: top half plot of body_swap_transfer_and_size_errors_split_1to1, with y axis label and legend
+
+- Generalizes to different data
+
+---
+
+In-domain
+
+TODO: omitted plot from body_swap_transfer_and_size_errors_split_1to1 that looks like the other two but is with varying test size
+
+- More test data → not worse
+
+---
+
+Why old sites positive?
 
 - Repeated templates and formulaic prose
-- Falcon-7B may have learned similar text
+- Binoculars memorization
 
 ---
 
-Polishing alone is not our target
+# ~~LLM-polished sites~~
 
-- 327 / 328 polished sites remain negative
+- Not "MGT-dominant"
+- 327/328 negative
 
 ---
 
-Findings in the wild
+# Accuracy-cost tradeoff
 
-- Common Crawl archive sample
-- Bing how-to search sample
+- Binoculars worse on newer LLMs
+- Could replace detector
+<!-- TODO: Pangram logo -->
+- E.g. Pangram
+
+---
+
+- 605 Claude texts, varying scores
+- Binoculars max-F1: 470 positive
+- Pangram: 594 positive
+    - Also better FPR; both low
+    - Costly: \$50 for above
+
+---
+
+# Findings in the wild
+
+- Common Crawl archive
+- Bing how-to search
 
 ---
 
 Common Crawl: 6.0% positive
 
-- 5,643 / 94,908 sites with ≥15 qualifying pages
+- 5,643/94,908 sites with ≥15 qualifying pages
 
 ---
 
@@ -275,7 +332,7 @@ Common Crawl: 6.0% positive
 
 Some archived sites shift in score
 
-- 1,486 / 26,414 sites meet the shift criterion
+- 1,486/26,414 sites meet the shift criterion
 - 234 expected after shuffling capture dates
 
 ---
@@ -346,7 +403,7 @@ Backup: denominator details
 
 - CC: 409,805 retained; 94,908 qualified
 - Bing: 59,046 result sites; 18,169 qualified
-- Top-ten calls: 4,532 / 10,000 matched queries
+- Top-ten calls: 4,532/10,000 matched queries
 
 ---
 
