@@ -325,17 +325,15 @@ Why old sites positive?
 
 ---
 
-<!-- We don't need this -->
-<!-- Common Crawl: saved pages
+Common Crawl: saved pages
 
 <img class="filter-plot" src="/paper/filter_pages_cc.png" alt="Common Crawl saved filtered pages: 9,107,806 stored, 8,605,649 with valid scores, 7,440,696 on qualifying sites"/>
 
---- -->
+---
 
-TODO: We need page-level breakdown and final number of sites instead of this
-<!-- Common Crawl: qualifying sites
+Common Crawl: qualifying sites
 
-<img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/> -->
+<img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/>
 
 ---
 
@@ -351,7 +349,7 @@ Bing: qualifying sites
 
 ---
 
-<!-- TODO: Make the text for Bing bar inside the bar and white so they don't go out of bound like they do now -->
+<!-- TODO: Actually, keep the sizes outside the bars and extend the x axis to 100for better scale. Make x axis visible -->
 <img class="wild-plot" src="/paper/qualified_site_positive_calls_clean.png" alt="Sites classified as MGT-dominant: 6.0% in Common Crawl, 15.4% in Bing search results"/>
 
 ---
@@ -371,6 +369,7 @@ Bing: qualifying sites
 --- -->
 
 <!-- TODO: Don't filter queries by whether they have positives, rid title and footer, add x axis label -->
+<!-- TODO: Make x axis visible -->
 <img class="wild-plot" src="/paper/search_queries_positive_calls.png" alt="Among 10,000 Bing how-to queries, 45.3% have an MGT-dominant site in the top ten and 64.8% in the top twenty"/>
 
 ---
@@ -387,9 +386,10 @@ Within the same searches
 # Site classification
 
 - GPT-OSS-120B
-- example pages and metadata
-- Wappalyzer identifies site components
-- EasyList and affiliate links identify monetization
+- N example pages and metadata
+<!-- TODO: Below belongs to other slides -->
+<!-- - Wappalyzer identifies site components
+- EasyList and affiliate links identify monetization -->
 
 ---
 
