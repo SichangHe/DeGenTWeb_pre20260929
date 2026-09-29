@@ -268,7 +268,7 @@ Area (km2): 82880.0</pre>
 
 ---
 
-In-domain: low false-positive rate
+In-domain: consistent <0.2% FPR
 
 <img class="method-plot todo-plot" src="/paper/todo_training_size_errors.png" alt="False-positive and false-negative rates across training-set sizes"/>
 
@@ -280,7 +280,7 @@ Out-of-domain: generalizes
 
 ---
 
-In-domain: test-size sensitivity
+In-domain: bigger test → not worse
 
 <img class="method-plot todo-plot" src="/paper/todo_test_size_errors.png" alt="False-negative and false-positive rates across test-set sizes with a fixed classifier"/>
 
@@ -388,6 +388,14 @@ Prevalent in Bing search
 
 ---
 
+# In-depth comparison
+
+- MGT-dominant vs non-
+- CC: 3,366 each
+- Bing: 2,393 each
+
+---
+
 # Site classification
 
 - GPT-OSS-120B
@@ -396,34 +404,27 @@ Prevalent in Bing search
 
 ---
 
-Site signals
+# Site signals
 
 - Wappalyzer: technologies
+    - e.g. WordPress, React
 - EasyList: ads
 - Link patterns: affiliates
 
 ---
 
-Compare equally sized site groups
-
-- CC: 3,366 MGT-dominant; 3,366 comparison
-- Bing: 2,393 MGT-dominant; 2,393 comparison
-
----
-
-<!-- TODO: The only thing that should have changed was the "LLM-" revert all other changes of this plot -->
 <img class="category-figure" src="/paper/llm_site_kinds_incentive_coarse_combined_1col.png" alt="Draft category comparison in selected, equal-sized groups"/>
 
 ---
 
-In selected CC groups: financial incentive
+Clearer financial incentive
 
-- 78.8% of flagged sites
-- 55.8% of the comparison group
+- 78.8% of MGT-dominant
+- 55.8% of non-
 
 ---
 
-Site types differ in Common Crawl
+Site class differ
 
 - More service and SaaS sites in the MGT-dominant group
 - Fewer personal and organizational sites
@@ -499,18 +500,6 @@ Body swap: factual brief
 Body swap: new article
 
 > Write a detailed standalone web-page main body from the factual brief below. The source text is unavailable: use only the brief, and do not imply that you saw or are rewriting another text.
-
----
-
-Training-size sensitivity
-
-<img class="paper-plot" src="/paper/fixed_test_vary_training_errors.png" alt="Paper training-size study with a fixed balanced test set"/>
-
----
-
-Test-size sensitivity
-
-<img class="paper-plot" src="/paper/fixed_training_vary_test_errors.png" alt="Separate paper test-size study with five fixed classifiers"/>
 
 ---
 
