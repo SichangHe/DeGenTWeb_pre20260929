@@ -1,3 +1,7 @@
+:root {
+  --slidev-transition-duration: 100ms;
+}
+
 .slidev-layout {
   background: #fff !important;
   color: #162337 !important;
