@@ -268,7 +268,7 @@ Area (km2): 82880.0</pre>
 
 ---
 
-In-domain: consistent <0.2% FPR
+In-domain: low false-positive rate
 
 <img class="method-plot todo-plot" src="/paper/todo_training_size_errors.png" alt="False-positive and false-negative rates across training-set sizes"/>
 
@@ -280,7 +280,7 @@ Out-of-domain: generalizes
 
 ---
 
-In-domain: bigger test → not worse
+In-domain: test-size sensitivity
 
 <img class="method-plot todo-plot" src="/paper/todo_test_size_errors.png" alt="False-negative and false-positive rates across test-set sizes with a fixed classifier"/>
 
@@ -305,7 +305,6 @@ Why old sites positive?
 
 - Binoculars worse on newer LLMs
 - Could replace detector
-<!-- TODO: Too small, make 3x large -->
 - E.g. <img class="detector-inline-logo" style="margin-left: -2em" src="/prior/pangram-logo.svg" alt="Pangram"/>
 
 ---
@@ -321,18 +320,22 @@ Why old sites positive?
 # Findings in the wild
 
 - Common Crawl archive
+    - Jan 2020 ~ May 2025
 - Bing how-to search
+    - 10k WikiHow, 2025
 
 ---
 
-Common Crawl: saved pages
+Common Crawl: page filtering
 
+<!-- TODO: This plot is wrong. Should match Bing's -->
 <img class="filter-plot" src="/paper/filter_pages_cc.png" alt="Common Crawl saved filtered pages: 9,107,806 stored, 8,605,649 with valid scores, 7,440,696 on qualifying sites"/>
 
 ---
 
 Common Crawl: qualifying sites
 
+<!-- TODO: This plot is wrong. Should match Bing's except not have search result sites and instead do "Total crawled" -->
 <img class="filter-plot" src="/paper/filter_sites_cc.png" alt="Common Crawl sites: 425,941 in saved source, 409,805 with scored pages, 94,908 with at least 15 scored pages"/>
 
 ---
@@ -475,12 +478,27 @@ Similar sites, shared technology
 
 ---
 
-Builder design
+Builder prompt → ChatGPT 4o
 
-<!-- TODO: These are wrong, and should give real prompts -->
-- Wix: company topics, generated names and blog prompts
-- B12: personal-blog topics, separate builder
-- Body swaps: real layouts with generated article bodies
+> Give a one-paragraph summary description of what content "[website domain name]" website has, without mentioning its name.
+
+---
+
+Builder prompt → ChatGPT 4o
+
+> Come up with a suiting name for a similar website. Suggest 30 diverse and suiting blog posts for this website.
+
+---
+
+Body swap: factual brief
+
+> Summarize the source text as a compact factual brief for a separate writer. List its topic, claims, named entities, dates, numbers, and important relationships.
+
+---
+
+Body swap: new article
+
+> Write a detailed standalone web-page main body from the factual brief below. The source text is unavailable: use only the brief, and do not imply that you saw or are rewriting another text.
 
 ---
 
