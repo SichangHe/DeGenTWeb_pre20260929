@@ -12,14 +12,15 @@
 
 ## Outline
 
-- 🤖motivation
+- motivation
   - central questions
     - how much of the web is MGT
     - what are these sites doing
   - why ask
     - three news screenshots introduce the concern
     - 🤖ask whether two real page examples differ in authorship
-      - 🤖candidate visuals: original site captures or traceable GitHub issues
+      - 🤖candidate: original New York Times Cooking capture from prior talk 3
+      - 🤖other candidates: relevant GitHub issues after source verification
   - challenges
     - cannot reliably detect MGT
       - text detector inaccuracies
@@ -27,7 +28,8 @@
       - lack of ground truth
     - cannot sample the whole web
       - 🤖two workable samples cannot represent every website
-- 🤖methodology — main focus
+- methodology
+  - 🤖main focus
   - 🤖define the measured target
     - 🤖sites dominated by machine-generated English prose
     - 🤖a subdomain is one site
@@ -57,7 +59,9 @@
     - 🤖page filtering excludes sites without enough prose
     - 🤖held-out tests do not calibrate historical wild-site calls
     - 🤖selected Sonnet 4/4.6 texts reveal frontier-detector limits
-- 🤖findings in the wild — shorter
+      - 🤖selected positives cannot compare matched false-positive rates
+- findings in the wild
+  - 🤖shorter than methodology
   - 🤖Common Crawl archive sample
     - 🤖409,805 retained subdomains
       - 🤖94,908 qualifying
