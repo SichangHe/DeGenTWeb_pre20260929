@@ -330,9 +330,9 @@ Why old sites positive?
 
 ---
 
-Common Crawl: page filtering
+Common Crawl: classified-capture filtering
 
-<img class="filter-plot" src="/paper/filter_pages_cc.png" alt="Common Crawl raw-cache pages: 44,388,672 crawled; 40,786,889 with English body; 18,062,509 passing Dolma; 9,105,147 additionally passing both token-length and duplication filters"/>
+<img class="filter-plot" src="/paper/filter_pages_cc.png" alt="Common Crawl historical cache: 44,388,672 latest successful captures with a classification; separate marginal counts of 40,786,889 English captures and 18,062,509 Dolma-pass captures; 9,105,147 pass Dolma plus both token-length and duplication filters. Separate token and duplication stages and the all-crawl denominator are unavailable"/>
 
 ---
 
